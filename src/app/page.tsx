@@ -7,7 +7,7 @@ const Home = () => (
     <Navbar />
     <div className='flex flex-col items-center justify-center h-screen'>
       <h1 className='text-5xl font-bold mb-5 text-white'>
-        Discover your musical aura
+        Uncover your musical aura
       </h1>
       <p className='text-l mb-8 block whitespace-pre text-center text-white'>
         lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod eu
