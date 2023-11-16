@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedIcon from './AnimatedIcon';
