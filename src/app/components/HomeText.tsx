@@ -18,9 +18,9 @@ const HomeText: FC = () => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen'>
+    <div className='flex flex-col relative items-center justify-center h-full'>
       <motion.h1
-        className='text-5xl font-bold mb-5 text-white'
+        className='text-5xl font-bold mb-5 text-black dark:text-white'
         variants={gerak}
         initial='hidden'
         animate='visible'
@@ -30,10 +30,10 @@ const HomeText: FC = () => {
           ease: 'easeInOut',
         }}
       >
-        Uncover your musical aura
+        &quot;Your <span style={{ color: '#07F468' }}>ID</span>, please.&quot;
       </motion.h1>
       <motion.p
-        className='text-l mb-8 block whitespace-pre text-center text-white'
+        className='text-l font-bold mb-8 block whitespace-pre text-center text-black dark:text-white'
         variants={gerak}
         initial='hidden'
         animate='visible'
@@ -43,9 +43,9 @@ const HomeText: FC = () => {
           ease: 'easeOut',
         }}
       >
-        lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod eu
+        Create your very own ID card with your Spotify profile picture, name,
         <br />
-        lorem et ultricies. In porta lorem at dui semper porttitor. Nullam quis
+        and your top artists from the past few months.
       </motion.p>
       <motion.div
         className='flex items-center justify-center'
@@ -58,7 +58,7 @@ const HomeText: FC = () => {
           ease: 'easeOut',
         }}
       >
-        <Button className='font-bold' size='lg'>
+        <Button className='font-bold z-10' size='lg'>
           <Image
             src='https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg'
             alt='spotify-icon'
