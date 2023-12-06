@@ -1,13 +1,14 @@
-'use client';
-
 import React, { FC } from 'react';
-import SignIn from '@/components/dashboard/SignIn';
+import Desc from '../sections/Desc';
+import About from '../sections/About';
+import Hero from '../sections/Hero';
 
 const Landing: FC = () => (
-  <div>
-    <h1>You&apos;re not logged in</h1>
-    <SignIn />
-  </div>
+  <main>
+    <Hero />
+    <Desc />
+    <About />
+  </main>
 );
 
 export default Landing;
