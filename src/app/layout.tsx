@@ -25,7 +25,9 @@ const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
     <html lang='en'>
       <body className={inter.className}>
         <SessionProvider session={session}>
-          <ReactQueryProvider>{children}</ReactQueryProvider>
+          <ReactQueryProvider>
+            {children}
+          </ReactQueryProvider>
         </SessionProvider>
       </body>
     </html>

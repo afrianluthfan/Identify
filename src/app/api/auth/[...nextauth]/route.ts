@@ -76,6 +76,7 @@ export const authOptions: NextAuthOptions = {
       const updatedSession = {
         ...session,
         accessToken: token.accessToken,
+        refreshAccessToken: token.refreshToken,
         error: token.error,
         user: token.user,
       };
