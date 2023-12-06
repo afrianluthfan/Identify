@@ -2,11 +2,17 @@
 
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
+import { PageProps } from '../../../.next/types/app/layout';
 
-const RunningText: FC = () => (
+interface RunningTextProps extends PageProps {
+  length?: string;
+  overflow?: string;
+  text?: string;
+}
 
+const RunningText: FC<RunningTextProps> = ({ length, overflow, text }) => (
   <motion.div
-    className='flex relative border-black dark:border-white border-y-1 w-[1920px]'
+    className={`flex relative border-black dark:border-white border-y-1 w-[${length}] overflow-${overflow}`}
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{
@@ -38,21 +44,7 @@ const RunningText: FC = () => (
           ease: 'linear',
         }}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-        pellentesque dapibus est, nec aliquet ipsum efficitur at. Suspendisse
-        dictum ullamcorper massa id luctus. Integer vitae erat pulvinar, euismod
-        risus in, bibendum odio. Ut ligula tortor, facilisis ac ipsum vitae,
-        varius tristique neque. Mauris ut rhoncus odio. Nam ultricies, velit
-        blandit fermentum aliquam, nisi nisl viverra felis, ac pharetra diam mi
-        ultricies sem. Integer convallis est nec lacus auctor pretium. Curabitur
-        vestibulum ligula a velit bibendum interdum. Duis neque sem, blandit nec
-        enim et, tincidunt consectetur elit. Sed at sodales metus. Duis dictum
-        in ligula vel facilisis. In porta aliquam purus sit amet suscipit. Cras
-        quis facilisis neque. Morbi lectus massa, mattis vitae sagittis ut,
-        gravida a nibh. Suspendisse quis eros cursus purus hendrerit cursus at
-        sed risus. Phasellus iaculis ante id nunc pharetra, vel dapibus eros
-        ultrices. Aliquam mollis sed nisl nec pellentesque. Morbi vehicula velit
-        augue, nec et.
+        {text}
       </motion.div>
     </motion.div>
   </motion.div>
