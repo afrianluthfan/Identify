@@ -1,13 +1,9 @@
-import Desc from './sections/Desc';
-import Hero from './sections/Hero';
-import About from './sections/About';
+import React, { FC } from 'react';
 
-const Home = () => (
-  <>
-    <Hero />
-    <Desc />
-    <About />
-  </>
+const Home: FC = () => (
+  <main>
+    <h1>You&apos;re Logged In</h1>
+  </main>
 );
 
 export default Home;

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import HomeText from '../components/HomeText';
-import RunningText from '../components/RunningText';
+import HomeText from '../../components/HomeText';
+import RunningText from '../../components/RunningText';
 
 const Hero: FC = () => (
   <section

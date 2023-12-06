@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
-import { PageProps } from '../../../.next/types/app/layout';
+import { PageProps } from '../../.next/types/app/layout';
 
 interface RunningTextProps extends PageProps {
   length?: string;
