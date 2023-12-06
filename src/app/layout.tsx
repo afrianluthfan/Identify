@@ -4,8 +4,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { getServerSession } from 'next-auth';
 import SessionProvider from '@/utils/SessionProvider';
-import { ReactQueryProvider } from '@/utils/ReactQueryProvider';
-import { authOptions } from './api/auth/[...nextauth]/route';
+import ReactQueryProvider from '@/utils/ReactQueryProvider';
+import { authOptions } from '@/server/authOptions';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,9 +25,7 @@ const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
     <html lang='en'>
       <body className={inter.className}>
         <SessionProvider session={session}>
-          <ReactQueryProvider>
-            {children}
-          </ReactQueryProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
         </SessionProvider>
       </body>
     </html>

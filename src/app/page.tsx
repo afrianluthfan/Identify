@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
 import SignOut from '@/components/dashboard/SignOut';
 import TopTracks from '@/components/dashboard/TopTracks';
-import { authOptions } from './api/auth/[...nextauth]/route';
+import { authOptions } from '@/server/authOptions';
 
 const Home = async () => {
   const session = await getServerSession(authOptions);

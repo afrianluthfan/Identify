@@ -18,7 +18,7 @@ const TopTracks: FC<TopTracksProps> = ({ accessToken }) => {
   const { data: AudioFeatures } = useAudioFeatures(accessToken, trackIDs ?? '');
 
   const happiestSong = AudioFeatures?.audio_features.sort(
-    (a:any, b:any) => b.valence - a.valence,
+    (a: any, b: any) => b.valence - a.valence,
   )[0]?.id;
 
   const { data: Track } = useGetTrack(accessToken, happiestSong);
