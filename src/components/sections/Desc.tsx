@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 const Desc: FC = () => (
   <section
     id='desc'
-    className='flex items-center align-middle justify-center w-full h-[1080px] bg-white dark:bg-black'
+    className='flex items-center align-middle justify-center w-full h-[1080px]'
   >
     <div className='grid grid-cols-4 grid-rows-2 w-full h-[1080px]'>
       <div className='flex items-center justify-center border-[2px] border-l-0 col-span-2 text-black border-black dark:border-white dark:text-white'>

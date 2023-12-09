@@ -6,10 +6,10 @@ import { getServerSession } from 'next-auth';
 import SessionProvider from '@/utils/SessionProvider';
 import ReactQueryProvider from '@/utils/ReactQueryProvider';
 import { authOptions } from '@/server/authOptions';
-import Providers from '../utils/providers';
+import UIProvider from '@/utils/UIProvider';
+import PageFooter from '@/components/sections/PageFooter';
 import Navibar from '../components/Navibar';
 import ThemeProvider from '../utils/ThemeProvider';
-import PageFooter from './sections/PageFooter';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,17 +26,21 @@ const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body className={inter.className}>
         <SessionProvider session={session}>
           <ReactQueryProvider>
-            <ThemeProvider>
-              <Providers>
+            <UIProvider>
+              <ThemeProvider
+                attribute='class'
+                defaultTheme='system'
+                enableSystem
+              >
                 <Navibar />
                 {children}
                 <PageFooter />
-              </Providers>
-            </ThemeProvider>
+              </ThemeProvider>
+            </UIProvider>
           </ReactQueryProvider>
         </SessionProvider>
       </body>

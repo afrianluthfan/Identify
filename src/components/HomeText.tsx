@@ -1,9 +1,8 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Button } from '@nextui-org/button';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
+import SignInButton from './SignInButton';
 
 const HomeText: FC = () => {
   const gerak = {
@@ -58,15 +57,7 @@ const HomeText: FC = () => {
           ease: 'easeOut',
         }}
       >
-        <Button className='font-bold z-10' size='lg'>
-          <Image
-            src='https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg'
-            alt='spotify-icon'
-            width={30}
-            height={30}
-          />
-          Sign in with Spotify
-        </Button>
+        <SignInButton />
       </motion.div>
     </div>
   );

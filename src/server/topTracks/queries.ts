@@ -5,7 +5,7 @@ const baseURL = 'https://api.spotify.com/v1/me';
 
 const fetchTopTracks = async (token: string) => {
   const { data } = await axios.get(
-    `${baseURL}/top/tracks?time_range=short_term`,
+    `${baseURL}/top/tracks?time_range=medium_term&limit=10`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
