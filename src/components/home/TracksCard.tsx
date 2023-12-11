@@ -6,17 +6,16 @@ import React, { FC } from 'react';
 import { Card, CardFooter } from '@nextui-org/react';
 import useGetTopTracks from '@/server/topTracks/queries';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 
-interface TracksCardProps {
-  accessToken: string;
-}
+const TracksCard: FC = () => {
+  const { data: session } = useSession();
 
-const TracksCard: FC<TracksCardProps> = ({ accessToken }) => {
-  const { data } = useGetTopTracks(accessToken);
+  const { data } = useGetTopTracks(session?.accessToken ?? '', '10');
 
   return (
     <div className='grid grid-cols-5 gap-4'>
-      {data?.items.map((track: any) => (
+      {data?.map((track) => (
         <Card
           isFooterBlurred
           radius='lg'
