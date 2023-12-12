@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import Desc from '../sections/Desc';
-import About from '../sections/About';
-import Hero from '../sections/Hero';
+import Hero from '@/components/sections/Hero';
+import Desc from '@/components/sections/Desc';
+import About from '@/components/sections/About';
 
 const Landing: FC = () => (
   <main>

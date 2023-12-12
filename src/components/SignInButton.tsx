@@ -3,9 +3,10 @@
 import React, { FC } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Button } from '../ui/button';
+import { Button } from '@nextui-org/button';
+import Image from 'next/image';
 
-const SignIn: FC = () => {
+const SignInButton: FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/';
@@ -22,7 +23,18 @@ const SignIn: FC = () => {
     }
   };
 
-  return <Button onClick={signInHandler}>Sign in with Spotify</Button>;
+  return (
+    <Button onClick={signInHandler} className='font-bold z-10' size='lg'>
+      {' '}
+      <Image
+        src='https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg'
+        alt='spotify-icon'
+        width={30}
+        height={30}
+      />
+      Sign in with Spotify
+    </Button>
+  );
 };
 
-export default SignIn;
+export default SignInButton;

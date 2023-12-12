@@ -1,15 +1,17 @@
 import React, { FC } from 'react';
-import HomeText from '../../components/HomeText';
-import RunningText from '../../components/RunningText';
+import { Chip } from '@nextui-org/react';
+import HomeText from '../HomeText';
+import RunningText from '../RunningText';
 
 const Hero: FC = () => (
   <section
     id='home'
-    className='flex items-center align-middle justify-center h-[1080px] bg-white dark:bg-black'
+    className='flex items-center align-middle justify-center h-[1080px]'
   >
     <div className=' my-52'>
       <div className='mt-[100px]'>
         <HomeText />
+        <Chip size='lg'>Chip</Chip>
       </div>
       <div className='mt-[275px]'>
         <RunningText

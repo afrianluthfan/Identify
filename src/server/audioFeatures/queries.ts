@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { AudioFeatures } from 'spotify-types';
 
 const baseURL = 'https://api.spotify.com/v1';
 
@@ -10,7 +11,7 @@ const fetchAudioFeatures = async (token: string, ids: string) => {
     },
   });
 
-  return data;
+  return data as AudioFeatures[];
 };
 
 const useAudioFeatures = (token: string, ids: string) =>

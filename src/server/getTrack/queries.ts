@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { Track } from 'spotify-types';
 
 const baseURL = 'https://api.spotify.com/v1';
 
@@ -10,7 +11,7 @@ const fetchTrack = async (token: string, id: string) => {
     },
   });
 
-  return data;
+  return data as Track;
 };
 
 const useGetTrack = (token: string, id: string) =>
