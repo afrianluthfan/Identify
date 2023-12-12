@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
-import SignIn from '@/components/dashboard/SignIn';
+import Hero from '@/components/sections/Hero';
+import Desc from '@/components/sections/Desc';
+import About from '@/components/sections/About';
 
 const Landing: FC = () => (
-  <div>
-    <h1>You&apos;re not logged in</h1>
-    <SignIn />
-  </div>
+  <main>
+    <Hero />
+    <Desc />
+    <About />
+  </main>
 );
 
 export default Landing;
