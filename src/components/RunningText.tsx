@@ -2,9 +2,8 @@
 
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
-import { PageProps } from '../../.next/types/app/layout';
 
-interface RunningTextProps extends PageProps {
+interface RunningTextProps {
   length?: string;
   overflow?: string;
   text?: string;
