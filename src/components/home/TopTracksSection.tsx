@@ -1,10 +1,6 @@
 import React, { FC } from 'react';
 import TracksCard from './TracksCard';
 
-// interface TopTracksSectionProps {
-//   accessToken: string;
-// }
-
 const TopTracksSection: FC = () => (
   <section className='h-[700px] flex justify-center items-center'>
     <div>

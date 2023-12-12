@@ -23,7 +23,7 @@ const TracksCard: FC = () => {
           key={track.id}
         >
           <Image
-            alt='Woman listing to music'
+            alt={track.name}
             className='object-cover'
             height={300}
             src={track.album.images[1].url}
