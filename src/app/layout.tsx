@@ -14,8 +14,9 @@ import ThemeProvider from '../utils/ThemeProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Uncoverify',
-  description: 'Uncover your musical aura',
+  title: 'Identify',
+  description: 'Identify your musical affinities',
+  icons: '/fav.svg',
 };
 
 interface RootLayoutProps {

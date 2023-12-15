@@ -8,6 +8,7 @@ import {
 } from '@nextui-org/react';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/server/authOptions';
+import Image from 'next/image';
 import ThemeButton from './ThemeButton';
 import ProfileButton from './home/ProfileButton';
 
@@ -17,9 +18,7 @@ const Navibar = async () => {
   return (
     <Navbar>
       <NavbarBrand>
-        <p className='font-bold text-2xl text-black dark:text-white'>
-          Identify
-        </p>
+        <Image src='/logo.svg' alt='logo' width={150} height={150} />
       </NavbarBrand>
       {session ? (
         <NavbarContent className='hidden sm:flex gap-4' justify='center'>
