@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import TopTracksSection from '@/components/home/TopTracksSection';
-import TopGenreSection from '@/components/home/TopGenreSection';
+import TopTracksSection from '@/app/_home/TopTracksSection';
+import TopGenreSection from '@/app/_home/TopGenreSection';
 
 const Home: FC = () => (
   <main>

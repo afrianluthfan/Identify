@@ -9,7 +9,7 @@ import {
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/server/authOptions';
 import ThemeButton from './ThemeButton';
-import ProfileButton from './home/ProfileButton';
+import ProfileButton from '../app/_home/ProfileButton';
 
 const Navibar = async () => {
   const session = await getServerSession(authOptions);

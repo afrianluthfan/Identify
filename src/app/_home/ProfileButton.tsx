@@ -8,8 +8,8 @@ import {
   DropdownMenuTrigger,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-} from '../ui/dropdown-menu';
-import { Button } from '../ui/button';
+} from '../../components/ui/dropdown-menu';
+import { Button } from '../../components/ui/button';
 import SignOut from './SignOut';
 
 interface ProfileButtonProps {
@@ -31,7 +31,9 @@ const ProfileButton: FC<ProfileButtonProps> = ({ session }) => (
     </DropdownMenuTrigger>
     <DropdownMenuContent>
       <DropdownMenuLabel>{session?.user?.name}</DropdownMenuLabel>
-      <DropdownMenuLabel className='text-tiny font-normal'>{session?.user?.email}</DropdownMenuLabel>
+      <DropdownMenuLabel className='text-tiny font-normal'>
+        {session?.user?.email}
+      </DropdownMenuLabel>
       <DropdownMenuSeparator />
       <SignOut />
     </DropdownMenuContent>
