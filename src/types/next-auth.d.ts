@@ -2,6 +2,7 @@ import {
   DefaultSession,
   Account as NextAuthAccount,
   User as NextAuthUser,
+  Profile as NextAuthProfile,
 } from 'next-auth';
 import { JWT as NextAuthJWT } from 'next-auth/jwt';
 
@@ -27,5 +28,11 @@ declare module 'next-auth/jwt' {
     accessTokenExpires?: number;
     error?: string;
     user?: User;
+  }
+}
+
+declare module 'next-auth' {
+  interface Profile extends NextAuthProfile {
+    id: string;
   }
 }
