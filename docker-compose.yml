@@ -1,19 +1,5 @@
-# specify the redirect_uri in Spotify Web API dashboard as http://localhost:3000/api/auth/callback/spotify and http://localhost:3000/
-# specify your own SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET.
-# for nextauth secret, you can generate one by running `openssl rand -base64 32` in your terminal.
-
 version: '3.9'
 services:
-  nextjs:
-    build: .
-    ports:
-      - 3000:3000
-    environment:
-      SPOTIFY_CLIENT_ID: YOUR_SPOTIFY_CLIENT_ID
-      SPOTIFY_CLIENT_SECRET: YOUR_SPOTIFY_CLIENT_SECRET
-      NEXTAUTH_SECRET: YOUR_NEXTAUTH_SECRET
-      SPOTIFY_REFRESH_TOKEN_URL: https://accounts.spotify.com/api/token
-      DATABASE_URL: postgres://postgres:foobarbaz@db:5432/identify
   db:
     image: postgres:15.1-alpine
     volumes:
