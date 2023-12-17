@@ -11,7 +11,7 @@ const fetchAudioFeatures = async (token: string, ids: string) => {
     },
   });
 
-  return data as AudioFeatures[];
+  return data.audio_features as AudioFeatures[];
 };
 
 const useAudioFeatures = (token: string, ids: string) =>

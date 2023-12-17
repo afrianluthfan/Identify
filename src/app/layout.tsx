@@ -8,8 +8,11 @@ import ReactQueryProvider from '@/provider/ReactQueryProvider';
 import { authOptions } from '@/server/authOptions';
 import UIProvider from '@/provider/UIProvider';
 import PageFooter from '@/components/sections/PageFooter';
+import SessionProvider from '@/providers/SessionProvider';
+import ReactQueryProvider from '@/providers/ReactQueryProvider';
+import UIProvider from '@/providers/UIProvider';
+import ThemeProvider from '@/providers/ThemeProvider';
 import Navibar from '../components/Navibar';
-import ThemeProvider from '../provider/ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 

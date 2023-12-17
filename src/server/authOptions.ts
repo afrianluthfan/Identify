@@ -2,6 +2,7 @@ import { JWT } from 'next-auth/jwt';
 import axios from 'axios';
 import { NextAuthOptions, SessionStrategy } from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
+import { prisma } from '@/db';
 
 const refreshAccessToken = async (token: JWT): Promise<JWT> => {
   try {
@@ -48,6 +49,14 @@ export const authOptions: NextAuthOptions = {
           scope: process.env.SPOTIFY_API_SCOPES ?? '',
         },
       },
+      profile(profile) {
+        return {
+          id: profile.id,
+          name: profile.display_name,
+          email: profile.email,
+          image: profile.images?.[1]?.url,
+        };
+      },
     }),
   ],
 
@@ -80,6 +89,19 @@ export const authOptions: NextAuthOptions = {
         user: token.user,
       };
       return updatedSession;
+    },
+    async signIn({ profile }) {
+      const existingUser = await prisma.user.findUnique({
+        where: { id: profile?.id },
+      });
+
+      if (existingUser) {
+        return true;
+      }
+      await prisma.user.create({
+        data: { id: profile?.id ?? '' },
+      });
+      return true;
     },
   },
 };
