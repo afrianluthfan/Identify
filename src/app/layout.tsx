@@ -3,13 +3,13 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { getServerSession } from 'next-auth';
-import SessionProvider from '@/utils/SessionProvider';
-import ReactQueryProvider from '@/utils/ReactQueryProvider';
+import SessionProvider from '@/provider/SessionProvider';
+import ReactQueryProvider from '@/provider/ReactQueryProvider';
 import { authOptions } from '@/server/authOptions';
-import UIProvider from '@/utils/UIProvider';
+import UIProvider from '@/provider/UIProvider';
 import PageFooter from '@/components/sections/PageFooter';
 import Navibar from '../components/Navibar';
-import ThemeProvider from '../utils/ThemeProvider';
+import ThemeProvider from '../provider/ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 

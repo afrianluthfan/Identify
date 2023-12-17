@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/server/authOptions';
 import { Avatar, Card, CardBody } from '@nextui-org/react';
 import Image from 'next/image';
-import RunningText from '../RunningText';
+import { authOptions } from '@/server/authOptions';
+import RunningText from '@/components/RunningText';
 import RadarChartComponent from './RadarChart';
 
 const IdCard: FC = async () => {
