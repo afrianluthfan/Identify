@@ -3,7 +3,10 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { getServerSession } from 'next-auth';
+import SessionProvider from '@/provider/SessionProvider';
+import ReactQueryProvider from '@/provider/ReactQueryProvider';
 import { authOptions } from '@/server/authOptions';
+import UIProvider from '@/provider/UIProvider';
 import PageFooter from '@/components/sections/PageFooter';
 import SessionProvider from '@/providers/SessionProvider';
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
@@ -14,8 +17,9 @@ import Navibar from '../components/Navibar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Uncoverify',
-  description: 'Uncover your musical aura',
+  title: 'Identify',
+  description: 'Identify your musical affinities',
+  icons: '/fav.svg',
 };
 
 interface RootLayoutProps {

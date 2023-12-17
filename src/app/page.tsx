@@ -5,6 +5,7 @@ import AudioFeatures from './_home/AudioFeatures';
 
 const Home: FC = () => (
   <main>
+    <IdCard />
     <TopTracksSection />
     <TopGenreSection />
     <AudioFeatures />

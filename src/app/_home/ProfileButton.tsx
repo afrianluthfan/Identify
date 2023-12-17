@@ -8,8 +8,8 @@ import {
   DropdownMenuTrigger,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-} from '../../components/ui/dropdown-menu';
-import { Button } from '../../components/ui/button';
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
 import SignOut from './SignOut';
 
 interface ProfileButtonProps {

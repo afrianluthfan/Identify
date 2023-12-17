@@ -8,11 +8,11 @@ const TopGenre: FC = () => {
   const { top10Genres } = TopGenreViewModel();
 
   return (
-    <div className='grid grid-cols-2 gap-4 w-[500px]'>
+    <div className='grid grid-cols-2 gap-4 w-[1000px] font-bold'>
       {top10Genres.map((genre) => (
         <Card>
           <CardBody>
-            <p>{genre}</p>
+            <p className='text-center'>{genre}</p>
           </CardBody>
         </Card>
       ))}
