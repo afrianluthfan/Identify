@@ -34,12 +34,7 @@
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-hook-form": "^7.48.2",
-    "react-kofi-button": "^0.7.1",
     "recharts": "^2.10.3",
-    "sass": "^1.69.5",
-    "swiper": "^11.0.5",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"
