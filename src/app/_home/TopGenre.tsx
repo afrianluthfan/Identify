@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+
 'use client';
 
 import React, { FC } from 'react';
@@ -9,8 +11,8 @@ const TopGenre: FC = () => {
 
   return (
     <div className='grid grid-cols-2 gap-4 w-[1000px] font-bold'>
-      {top10Genres.map((genre) => (
-        <Card>
+      {top10Genres.map((genre, index) => (
+        <Card key={index}>
           <CardBody>
             <p className='text-center'>{genre}</p>
           </CardBody>
