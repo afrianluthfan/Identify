@@ -4,9 +4,9 @@ import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 
 interface RunningTextProps {
-  length?: string;
-  overflow?: string;
-  text?: string;
+  length: string;
+  overflow: string;
+  text: string;
 }
 
 const RunningText: FC<RunningTextProps> = ({ length, overflow, text }) => (

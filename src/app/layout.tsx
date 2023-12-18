@@ -3,15 +3,13 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { getServerSession } from 'next-auth';
-import SessionProvider from '@/provider/SessionProvider';
-import ReactQueryProvider from '@/provider/ReactQueryProvider';
 import { authOptions } from '@/server/authOptions';
-import UIProvider from '@/provider/UIProvider';
 import PageFooter from '@/components/sections/PageFooter';
 import SessionProvider from '@/providers/SessionProvider';
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
 import UIProvider from '@/providers/UIProvider';
 import ThemeProvider from '@/providers/ThemeProvider';
+import { Toaster } from 'sonner';
 import Navibar from '../components/Navibar';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -40,6 +38,7 @@ const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
                 defaultTheme='system'
                 enableSystem
               >
+                <Toaster position='top-left' />
                 <Navibar />
                 {children}
                 <PageFooter />
