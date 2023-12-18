@@ -48,7 +48,7 @@ const fetchRecommendations = async (
     }`;
   }
 
-  url += `&market=${market}&max_popularity=55&min_popularity=15&limit=15`;
+  url += `&market=${market}&max_popularity=55&min_popularity=15&limit=5`;
 
   const { data } = await axios.get(url, {
     headers: {
