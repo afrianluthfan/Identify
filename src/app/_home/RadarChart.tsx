@@ -109,7 +109,7 @@ const RadarChartComponent: FC = () => {
     <ResponsiveContainer width='100%' height='100%'>
       <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
         {/* Jaring graf */}
-        <PolarGrid stroke='#FFFFFF' />
+        <PolarGrid stroke='#171717' />
         {/* Outline graf dan tulisan */}
         <PolarAngleAxis dataKey='subject' stroke='#FFFFFF' />
         <PolarRadiusAxis angle={120} />
@@ -117,9 +117,9 @@ const RadarChartComponent: FC = () => {
           name='Mike'
           dataKey='A'
           // Stroke blob data
-          // stroke='#07F468'
+          stroke='#FFFFFF'
           // Fill blob data
-          fill='#07F468'
+          fill='#000000'
           fillOpacity={0.5}
           fontSize={30}
         />
