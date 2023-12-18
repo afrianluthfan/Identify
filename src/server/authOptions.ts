@@ -66,13 +66,16 @@ export const authOptions: NextAuthOptions = {
   },
 
   callbacks: {
-    async jwt({ token, account, user }) {
-      if (account && user) {
+    async jwt({ token, account, user, profile }) {
+      if (account && user && profile) {
         return {
           accessToken: account.access_token,
           refreshToken: account.refresh_token,
           accessTokenExpires: account.expires_at * 1000,
-          user,
+          user: {
+            ...user,
+            country: profile.country, // Add this line
+          },
         };
       }
       if (token.accessTokenExpires && Date.now() < token.accessTokenExpires) {
