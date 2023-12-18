@@ -4,7 +4,7 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Avatar, Card, CardBody } from '@nextui-org/react';
+import { Avatar, Button, Card, CardBody } from '@nextui-org/react';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { useToPng } from '@hugocxl/react-to-image';
@@ -129,9 +129,13 @@ const UserCard: FC = () => {
           />
         </div> */}
         </Card>
-        <button onClick={convert} type='button'>
-          Download
-        </button>
+        <Button
+          onClick={convert}
+          type='button'
+          className='w-[20%] h-12 mt-5 text-xl font-bold'
+        >
+          Obtain card
+        </Button>
       </div>
       <div className='flex my-5'>
         <RunningText length='100%' overflow='hidden' text={arrayText} />
