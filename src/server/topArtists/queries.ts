@@ -4,9 +4,11 @@ import { Artist } from 'spotify-types';
 
 const baseURL = 'https://api.spotify.com/v1/me';
 
-const fetchTopArtists = async (token: string, limit: string) => {
+type Term = 'short_term' | 'medium_term' | 'long_term';
+
+const fetchTopArtists = async (token: string, term: Term, limit: string) => {
   const { data } = await axios.get(
-    `${baseURL}/top/artists?time_range=medium_term&limit=${limit}`,
+    `${baseURL}/top/artists?time_range=${term}&limit=${limit}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -17,12 +19,12 @@ const fetchTopArtists = async (token: string, limit: string) => {
   return data.items as Artist[];
 };
 
-const useGetTopArtists = (accessToken: string, limit: string) =>
+const useGetTopArtists = (accessToken: string, term: Term, limit: string) =>
   useQuery({
-    queryKey: ['artists', accessToken, limit],
+    queryKey: ['artists', accessToken, term, limit],
     queryFn: ({ queryKey }) => {
-      const [, token, fetchLimit] = queryKey;
-      return fetchTopArtists(token, fetchLimit);
+      const [, token, fetchTerm, fetchLimit] = queryKey;
+      return fetchTopArtists(token, fetchTerm as Term, fetchLimit);
     },
   });
 

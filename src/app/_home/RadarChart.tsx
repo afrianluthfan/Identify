@@ -18,7 +18,11 @@ import {
 const RadarChartComponent: FC = () => {
   const { data: session } = useSession();
 
-  const { data: TopTracks } = useGetTopTracks(session?.accessToken ?? '', '50');
+  const { data: TopTracks } = useGetTopTracks(
+    session?.accessToken ?? '',
+    'long_term',
+    '50',
+  );
 
   const trackIds = TopTracks?.map((track) => track.id).join(',');
 
