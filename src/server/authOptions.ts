@@ -2,7 +2,7 @@ import { JWT } from 'next-auth/jwt';
 import axios from 'axios';
 import { NextAuthOptions, SessionStrategy } from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
-import { prisma } from '@/db';
+// import { prisma } from '@/db';
 
 const refreshAccessToken = async (token: JWT): Promise<JWT> => {
   try {
@@ -55,6 +55,7 @@ export const authOptions: NextAuthOptions = {
           name: profile.display_name,
           email: profile.email,
           image: profile.images?.[1]?.url,
+          country: profile.country,
         };
       },
     }),
@@ -65,13 +66,16 @@ export const authOptions: NextAuthOptions = {
   },
 
   callbacks: {
-    async jwt({ token, account, user }) {
-      if (account && user) {
+    async jwt({ token, account, user, profile }) {
+      if (account && user && profile) {
         return {
           accessToken: account.access_token,
           refreshToken: account.refresh_token,
           accessTokenExpires: account.expires_at * 1000,
-          user,
+          user: {
+            ...user,
+            country: profile.country, // Add this line
+          },
         };
       }
       if (token.accessTokenExpires && Date.now() < token.accessTokenExpires) {
@@ -90,18 +94,18 @@ export const authOptions: NextAuthOptions = {
       };
       return updatedSession;
     },
-    async signIn({ profile }) {
-      const existingUser = await prisma.user.findUnique({
-        where: { id: profile?.id },
-      });
+    // async signIn({ profile }) {
+    //   const existingUser = await prisma.user.findUnique({
+    //     where: { id: profile?.id },
+    //   });
 
-      if (existingUser) {
-        return true;
-      }
-      await prisma.user.create({
-        data: { id: profile?.id ?? '' },
-      });
-      return true;
-    },
+    //   if (existingUser) {
+    //     return true;
+    //   }
+    //   await prisma.user.create({
+    //     data: { id: profile?.id ?? '' },
+    //   });
+    //   return true;
+    // },
   },
 };

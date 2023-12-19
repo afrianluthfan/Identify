@@ -6,6 +6,7 @@ const TopGenreViewModel = () => {
 
   const { data: topArtists } = useGetTopArtists(
     session?.accessToken ?? '',
+    'medium_term',
     '50',
   );
   const topGenres = topArtists?.map((artist) => artist.genres);

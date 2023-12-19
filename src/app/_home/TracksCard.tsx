@@ -13,7 +13,11 @@ import TrackSkeleton from './TrackSkeleton';
 const TracksCard: FC = () => {
   const { data: session } = useSession();
 
-  const { data, isLoading } = useGetTopTracks(session?.accessToken ?? '', '10');
+  const { data, isLoading } = useGetTopTracks(
+    session?.accessToken ?? '',
+    'medium_term',
+    '10',
+  );
 
   return (
     <div className='grid grid-cols-5 gap-4'>
