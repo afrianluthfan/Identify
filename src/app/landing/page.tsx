@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import Hero from '@/components/sections/Hero';
 import Desc from '@/components/sections/Desc';
-import About from '@/components/sections/About';
+// import About from '@/components/sections/About';
 
 const Landing: FC = () => (
   <main>
     <Hero />
     <Desc />
-    <About />
+    {/* <About /> */}
   </main>
 );
 
