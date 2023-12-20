@@ -11,7 +11,7 @@ interface RunningTextProps {
 
 const RunningText: FC<RunningTextProps> = ({ length, overflow, text }) => (
   <motion.div
-    className={`flex relative border-black dark:border-white border-y-1 w-[${length}] overflow-${overflow} h-[30px]`}
+    className={`flex relative border-black dark:border-white border-y-1 w-[${length}] overflow-${overflow} h-[30px] sm:h-[50px]`}
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{
