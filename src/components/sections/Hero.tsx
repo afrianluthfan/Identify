@@ -17,21 +17,7 @@ const Hero: FC = () => (
         <RunningText
           length='100%'
           overflow='hidden'
-          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-        pellentesque dapibus est, nec aliquet ipsum efficitur at. Suspendisse
-        dictum ullamcorper massa id luctus. Integer vitae erat pulvinar, euismod
-        risus in, bibendum odio. Ut ligula tortor, facilisis ac ipsum vitae,
-        varius tristique neque. Mauris ut rhoncus odio. Nam ultricies, velit
-        blandit fermentum aliquam, nisi nisl viverra felis, ac pharetra diam mi
-        ultricies sem. Integer convallis est nec lacus auctor pretium. Curabitur
-        vestibulum ligula a velit bibendum interdum. Duis neque sem, blandit nec
-        enim et, tincidunt consectetur elit. Sed at sodales metus. Duis dictum
-        in ligula vel facilisis. In porta aliquam purus sit amet suscipit. Cras
-        quis facilisis neque. Morbi lectus massa, mattis vitae sagittis ut,
-        gravida a nibh. Suspendisse quis eros cursus purus hendrerit cursus at
-        sed risus. Phasellus iaculis ante id nunc pharetra, vel dapibus eros
-        ultrices. Aliquam mollis sed nisl nec pellentesque. Morbi vehicula velit
-        augue, nec et.'
+          text='Hallo! Përshëndetje! Selam! Marhaba! Barev! Salam! Kaixo! Hyālō! Zdravo! Zdraveĭte! Haallo! Nǐ hǎo! Hola! Kamusta! Moni! Bonghjornu! Zdravo! Ahoj! Hej! Hallo! Hello! Tere! Hello! Salām! Bula! Kumusta! Hei! Bonjour! Dia dhuit! Ola! Gamarjoba! Guten tag! Geia! Mba’éichapa! Bonjou! Aloha! Shalom! Namaste! Nyob zoo! Szia! Halló! Ndewo! Hello! Halo! Ciao! Konnichiwa! Halo! Namaskāra! Salam! Hola! Kamusta! Moni! Bonghjornu! Zdravo! Ahoj! Hej! Hallo! Hello! Tere! Hello! Salām! Bula! Kumusta! Hei! Bonjour! Dia dhuit! Ola! Gamarjoba! Guten tag! Geia! Hallo! Përshëndetje! Selam! Marhaba! Barev! Salam! Kaixo! Hyālō! Zdravo! Zdraveĭte! Haallo! Nǐ hǎo! Hola! Kamusta! Moni! Bonghjornu! Zdravo! Ahoj! Hej! Hallo! Hello! Tere! Hello! Salām! Bula! Kumusta! Hei! Bonjour! Dia dhuit! Ola! Gamarjoba! Guten tag! Geia! Mba’éichapa! Bonjou! Aloha! Shalom! Namaste! Nyob zoo! Szia! Halló! Ndewo! Hello! Halo! Ciao! Konnichiwa! Halo! Namaskāra! Salam! Hola! Kamusta! Moni! Bonghjornu! Zdravo! Ahoj! Hej! Hallo! Hello! Tere! Hello! Salām! Bula! Kumusta! Hei! Bonjour! Dia dhuit! Ola! Gamarjoba! Guten tag! Geia!'
         />
       </div>
     </div>
