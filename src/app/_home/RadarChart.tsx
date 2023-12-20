@@ -106,35 +106,52 @@ const RadarChartComponent: FC = () => {
     },
   ];
   return (
-    <ResponsiveContainer width='100%' height='100%'>
-      <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
-        {/* Jaring graf */}
-        <PolarGrid stroke='#171717' />
-        {/* Outline graf dan tulisan */}
-        <PolarAngleAxis dataKey='subject' stroke='#FFFFFF' />
-        <PolarRadiusAxis angle={120} />
-        <Radar
-          name='Mike'
-          dataKey='A'
-          // Stroke blob data
-          stroke='#FFFFFF'
-          // Fill blob data
-          fill='#000000'
-          fillOpacity={0.5}
-          fontSize={30}
-        />
-        {/* <Radar
-          name='asdasd'
-          dataKey='B'
-          // Stroke blob data
-          stroke='#00FFFF'
-          // Fill blob data
-    
-          fillOpacity={0.3}
-          fontSize={30}
-        /> */}
-      </RadarChart>
-    </ResponsiveContainer>
+    <>
+      {/* light mode */}
+      <ResponsiveContainer width='100%' height='100%' className='dark:hidden'>
+        <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
+          {/* Jaring graf */}
+          <PolarGrid stroke='#171717' />
+          {/* Outline graf dan tulisan */}
+          <PolarAngleAxis dataKey='subject' stroke='#000000' />
+          <PolarRadiusAxis angle={120} stroke='#000000' />
+          <Radar
+            name='Mike'
+            dataKey='A'
+            // Stroke blob data
+            stroke='#FFFFFF'
+            // Fill blob data
+            fill='#000000'
+            fillOpacity={0.5}
+            fontSize={30}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
+      {/* dark mode */}
+      <ResponsiveContainer
+        width='100%'
+        height='100%'
+        className='hidden dark:block'
+      >
+        <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
+          {/* Jaring graf */}
+          <PolarGrid stroke='#FFFFFF' />
+          {/* Outline graf dan tulisan */}
+          <PolarAngleAxis dataKey='subject' stroke='#FFFFFF' />
+          <PolarRadiusAxis angle={120} />
+          <Radar
+            name='Mike'
+            dataKey='A'
+            // Stroke blob data
+            stroke='#FFFFFF'
+            // Fill blob data
+            fill='#000000'
+            fillOpacity={0.5}
+            fontSize={30}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
+    </>
   );
 };
 

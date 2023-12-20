@@ -70,7 +70,7 @@ const UserCard: FC = () => {
               </div>
             </div>
             {/* Nama user */}
-            <div className='absolute flex top-64 left-10 border'>
+            <div className='absolute flex top-64 left-10 border border-black dark:border-white'>
               <p className='font-bold text-[72px]'>{session?.user?.name}</p>
             </div>
             {/* Radar Chart */}
