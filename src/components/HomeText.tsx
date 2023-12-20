@@ -19,7 +19,7 @@ const HomeText: FC = () => {
   return (
     <div className='flex flex-col relative items-center justify-center h-full'>
       <motion.h1
-        className='text-5xl font-bold mb-5 text-black dark:text-white'
+        className='text-4xl sm:text-5xl font-bold mb-5 text-black dark:text-white'
         variants={gerak}
         initial='hidden'
         animate='visible'
@@ -32,7 +32,7 @@ const HomeText: FC = () => {
         &quot;Your <span style={{ color: '#07F468' }}>ID</span>, please.&quot;
       </motion.h1>
       <motion.p
-        className='text-l font-bold mb-8 block whitespace-pre text-center text-black dark:text-white'
+        className='text-[12px] sm:text-l font-bold mb-8 block text-center text-black dark:text-white'
         variants={gerak}
         initial='hidden'
         animate='visible'

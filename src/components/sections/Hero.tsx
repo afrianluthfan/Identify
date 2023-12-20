@@ -6,7 +6,7 @@ import RunningText from '../RunningText';
 const Hero: FC = () => (
   <section
     id='home'
-    className='flex items-center align-middle justify-center h-[1080px]'
+    className='flex items-center justify-center h-[1080px]'
   >
     <div className=' my-52'>
       <div className='mt-[100px]'>

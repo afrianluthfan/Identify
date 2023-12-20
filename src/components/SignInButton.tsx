@@ -24,7 +24,12 @@ const SignInButton: FC = () => {
   };
 
   return (
-    <Button onClick={signInHandler} className='font-bold z-10' size='lg'>
+    <Button
+      onClick={signInHandler}
+      className='font-bold z-10'
+      size='lg'
+      radius='sm'
+    >
       {' '}
       <Image
         src='https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg'
@@ -32,7 +37,7 @@ const SignInButton: FC = () => {
         width={30}
         height={30}
       />
-      Sign in with Spotify
+      <p className='text-sm sm:text-md'>Sign in with Spotify</p>
     </Button>
   );
 };
