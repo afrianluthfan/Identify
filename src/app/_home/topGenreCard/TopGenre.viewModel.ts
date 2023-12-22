@@ -3,8 +3,7 @@ import { useSession } from 'next-auth/react';
 
 const TopGenreViewModel = () => {
   const { data: session } = useSession();
-
-  const { data: topArtists } = useGetTopArtists(
+  const { data: topArtists, isLoading } = useGetTopArtists(
     session?.accessToken ?? '',
     'medium_term',
     '50',
@@ -33,6 +32,7 @@ const TopGenreViewModel = () => {
 
   return {
     top10Genres,
+    isLoading,
   };
 };
 

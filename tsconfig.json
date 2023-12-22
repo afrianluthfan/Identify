@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "moduleDetection": "force",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "noUncheckedIndexedAccess": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",

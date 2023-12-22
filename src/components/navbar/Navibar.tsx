@@ -1,55 +1,99 @@
-import React from 'react';
+'use client';
+
+import React, { FC, useState } from 'react';
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
+  NavbarMenuToggle,
+  NavbarMenu,
 } from '@nextui-org/react';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/server/authOptions';
+import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import ProfileButton from '@/components/navbar/ProfileButton';
 import ThemeButton from '../ThemeButton';
 import Logo from '../Logo';
 
-const Navibar = async () => {
-  const session = await getServerSession(authOptions);
+const Navibar: FC = () => {
+  const { data: session } = useSession();
+
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
-    <Navbar>
-      <NavbarBrand>
-        <Logo />
-      </NavbarBrand>
+    <Navbar
+      position='sticky'
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+    >
       {session ? (
-        <NavbarContent className='hidden sm:flex gap-4' justify='center'>
-          <NavbarItem>
-            <ProfileButton session={session} />
-          </NavbarItem>
-          <NavbarItem>
-            <ThemeButton />
-          </NavbarItem>
-        </NavbarContent>
+        <>
+          <NavbarContent justify='start'>
+            <NavbarBrand>
+              <Logo />
+            </NavbarBrand>
+          </NavbarContent>
+          <NavbarContent className='flex gap-1' justify='end'>
+            <NavbarItem>
+              <ProfileButton session={session} />
+            </NavbarItem>
+            <NavbarItem>
+              <ThemeButton />
+            </NavbarItem>
+          </NavbarContent>
+        </>
       ) : (
-        <NavbarContent className='hidden sm:flex gap-4' justify='center'>
-          <NavbarItem>
-            <Link color='foreground' href='#home'>
-              Home
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color='foreground' href='#about'>
-              About Us
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color='foreground' href='#footer'>
-              Contact Us
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <ThemeButton />
-          </NavbarItem>
-        </NavbarContent>
+        <>
+          <NavbarContent className='sm:hidden'>
+            <NavbarMenuToggle
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            />
+          </NavbarContent>
+          <NavbarContent justify='start'>
+            <NavbarBrand>
+              <Logo />
+            </NavbarBrand>
+          </NavbarContent>
+          <NavbarContent className='hidden sm:flex gap-4' justify='center'>
+            <NavbarItem>
+              <Link color='foreground' href='#home'>
+                Home
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link color='foreground' href='#about'>
+                About
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link color='foreground' href='#footer'>
+                Contact Us
+              </Link>
+            </NavbarItem>
+          </NavbarContent>
+          <NavbarContent justify='end'>
+            <NavbarItem>
+              <ThemeButton />
+            </NavbarItem>
+          </NavbarContent>
+          <NavbarMenu>
+            <NavbarItem>
+              <Link color='foreground' href='#home'>
+                Home
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link color='foreground' href='#home'>
+                About
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link color='foreground' href='#home'>
+                Contact Us
+              </Link>
+            </NavbarItem>
+          </NavbarMenu>
+        </>
       )}
     </Navbar>
   );
