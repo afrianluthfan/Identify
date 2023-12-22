@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import TracksCard from './TracksCard';
+import TracksCard from './tracksCard/TracksCard';
 
 const TopTracksSection: FC = () => (
   <section className='h-[700px] flex justify-center items-center'>

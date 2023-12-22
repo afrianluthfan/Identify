@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import useGetTopArtists from '@/server/topArtists/queries';
 import useGetRecommendations from '@/server/getRecommendations/queries';
-import TrackSkeleton from './TrackSkeleton';
+import TrackSkeleton from '../../../components/skeletons/TrackSkeleton';
 
 const RecommendationsCard: FC = () => {
   const { data: session } = useSession();

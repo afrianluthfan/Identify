@@ -10,7 +10,7 @@ import ReactQueryProvider from '@/providers/ReactQueryProvider';
 import UIProvider from '@/providers/UIProvider';
 import ThemeProvider from '@/providers/ThemeProvider';
 import { Toaster } from 'sonner';
-import Navibar from '../components/Navibar';
+import Navibar from '../components/navbar/Navibar';
 
 const inter = Inter({ subsets: ['latin'] });
 

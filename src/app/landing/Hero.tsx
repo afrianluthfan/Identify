@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Chip } from '@nextui-org/react';
-import HomeText from '../HomeText';
-import RunningText from '../RunningText';
+import HomeText from '../../components/HomeText';
+import RunningText from '../../components/RunningText';
 
 const Hero: FC = () => (
   <section

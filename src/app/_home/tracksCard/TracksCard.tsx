@@ -8,7 +8,7 @@ import { Card, CardFooter } from '@nextui-org/react';
 import useGetTopTracks from '@/server/topTracks/queries';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
-import TrackSkeleton from './TrackSkeleton';
+import TrackSkeleton from '../../../components/skeletons/TrackSkeleton';
 
 const TracksCard: FC = () => {
   const { data: session } = useSession();

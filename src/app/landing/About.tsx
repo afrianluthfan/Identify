@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import RunningText from '../RunningText';
+import RunningText from '../../components/RunningText';
 
 const About: FC = () => (
   <section

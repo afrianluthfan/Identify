@@ -8,9 +8,9 @@ import {
 } from '@nextui-org/react';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/server/authOptions';
-import ProfileButton from '@/app/_home/ProfileButton';
-import ThemeButton from './ThemeButton';
-import Logo from './Logo';
+import ProfileButton from '@/components/navbar/ProfileButton';
+import ThemeButton from '../ThemeButton';
+import Logo from '../Logo';
 
 const Navibar = async () => {
   const session = await getServerSession(authOptions);

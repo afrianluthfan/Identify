@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import TopGenre from './TopGenre';
+import TopGenre from './topGenreCard/TopGenre';
 
 const TopGenreSection: FC = () => (
   <section className='h-[400px] flex justify-center items-center mb-10'>
