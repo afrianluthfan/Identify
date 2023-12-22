@@ -41,8 +41,8 @@ const HorCard: FC = () => {
       ref={ref}
     >
       <Card className='w-full h-full'>
-        <CardBody className='flex items-center justify-center text-center'>
-          <p className='text-5xl font-bold'>
+        <CardBody className='flex items-center justify-center text-center sm:p-0 p-10'>
+          <p className='sm:text-5xl text-3xl font-bold'>
             Generate your very own{' '}
             <span className='text-[#07F468]'>
               <br />

@@ -2,6 +2,8 @@
 
 import React, { FC, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
+import { Card } from '@nextui-org/react';
+import Image from 'next/image';
 
 const IdentifyText: FC = () => {
   const gerak = {
@@ -24,8 +26,8 @@ const IdentifyText: FC = () => {
   }
 
   return (
-    <motion.h4
-      className='text-5xl font-bold'
+    <motion.div
+      className='w-full h-full text-5xl font-bold'
       variants={gerak}
       initial='hidden'
       animate={animationControl}
@@ -36,8 +38,17 @@ const IdentifyText: FC = () => {
       }}
       ref={ref}
     >
-      Identify
-    </motion.h4>
+      <Card className='flex w-full h-full items-center justify-center'>
+        <div className='relative w-fill max-w-[200px] aspect-[1/1] '>
+          <Image
+            src='https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg'
+            alt='spotify-icon'
+            height={100}
+            width={100}
+          />
+        </div>
+      </Card>
+    </motion.div>
   );
 };
 
