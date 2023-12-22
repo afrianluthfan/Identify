@@ -8,7 +8,7 @@ import { Card, CardFooter } from '@nextui-org/react';
 import useGetTopTracks from '@/server/topTracks/queries';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
-import TrackSkeleton from './TrackSkeleton';
+import TrackSkeleton from '../../../components/skeletons/TrackSkeleton';
 
 const TracksCard: FC = () => {
   const { data: session } = useSession();
@@ -39,14 +39,14 @@ const TracksCard: FC = () => {
           <Card
             isFooterBlurred
             radius='lg'
-            className='border-none sm:w-[200px] w-[175px]'
+            className='border-none sm:w-[200px] w-[210px]'
             key={track.id}
           >
             <Image
               alt={track.name}
               className='object-cover'
               height={300}
-              src={track.album.images[1].url}
+              src={track?.album?.images[1]?.url ?? ''}
               width={300}
             />
             <CardFooter className='before:bg-white/10 border-white/20 border-1 overflow-hidden sm:py-2 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] h-[70px] shadow-small ml-1 z-10 bg-slate-700 bg-opacity-70'>

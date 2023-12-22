@@ -4,7 +4,7 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Avatar, Button, Card, CardBody } from '@nextui-org/react';
+import { Avatar, Button, Card, CardBody, CardHeader } from '@nextui-org/react';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { useToPng } from '@hugocxl/react-to-image';
@@ -57,21 +57,26 @@ const UserCard: FC = () => {
             width={645}
             className='absolute blur-sm top-[-100px] left-0'
           />
-          <CardBody className='relative p-8 overflow-hidden flex justify-center items-center'>
-            <Avatar
-              src={session?.user?.image ?? ''}
-              size='lg'
-              className='rounded-[100%] sm:mr-5 absolute left-[16px] top-[16px]'
-              isBordered
-            />
-            <div className='sm:flex sm:justify-between sm:w-[1245px]'>
-              <div className='border border-black dark:border-white sm:ml-16'>
-                <p className='font-bold sm:text-[72px] text-[38px]'>
-                  {session?.user?.name}
-                </p>
+          <CardHeader className='p-5'>
+            <div className='flex'>
+              <Avatar
+                src={session?.user?.image ?? ''}
+                size='lg'
+                className='rounded-[100%] mr-5'
+                isBordered
+              />
+              <p className='font-bold sm:text-[30px] text-[25px]'>
+                {session?.user?.name}
+              </p>
+            </div>
+          </CardHeader>
+          <CardBody className='relative overflow-hidden flex'>
+            <div className='flex flex-col sm:flex-row sm:justify-between'>
+              <div className='border border-black dark:border-white -order-first sm:order-first flex items-center justify-center'>
+                <p>Content</p>
               </div>
               <div className='sm:w-[600px] h-[400px] relative'>
-                <div className='sm:w-[600px] h-[400px] bg-white bg-opacity-[10%] rounded-3xl sm:rounded-l-3xl backdrop-blur-lg '>
+                <div className='sm:w-[600px] h-[400px] bg-white bg-opacity-[10%] rounded-3xl sm:rounded-l-3xl backdrop-blur-lg'>
                   <RadarChartComponent />
                 </div>
               </div>
@@ -100,7 +105,7 @@ const UserCard: FC = () => {
           type='button'
           className='w-[20%] h-12 mt-5 text-xl font-bold'
         >
-          Obtain card
+          <p className='text-small sm:text-lg'> Obtain card</p>
         </Button>
       </div>
       <div className='flex my-5'>

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { buttonVariants } from '../ui/button';
-import Logo from '../Logo';
+import { buttonVariants } from './ui/button';
+import Logo from './Logo';
 
 const PageFooter: FC = () => (
   <footer className='flex h-[120px] w-full items-center justify-center'>

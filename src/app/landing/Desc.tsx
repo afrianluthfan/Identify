@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import PixelArt from '../PixelArt';
-import DescCard from '../DescCard';
-import IdentifyText from '../IdentifyText';
-import VertCard from '../VertCard';
-import HorCard from '../HorCard';
+import PixelArt from '../../components/PixelArt';
+import DescCard from '../../components/DescCard';
+import IdentifyText from '../../components/IdentifyText';
+import VertCard from '../../components/VertCard';
+import HorCard from '../../components/HorCard';
 
 const Desc: FC = () => (
   <section

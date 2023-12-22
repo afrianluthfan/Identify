@@ -108,7 +108,7 @@ const RadarChartComponent: FC = () => {
   return (
     <>
       {/* light mode */}
-      <ResponsiveContainer width='80%' height='80%' className='dark:hidden'>
+      <ResponsiveContainer width='50%%' height='80%' className='dark:hidden'>
         <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
           {/* Jaring graf */}
           <PolarGrid stroke='#171717' />

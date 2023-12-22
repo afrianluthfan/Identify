@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import Hero from '@/components/sections/Hero';
-import Desc from '@/components/sections/Desc';
+import Hero from './Hero';
+import Desc from './Desc';
 // import About from '@/components/sections/About';
 
 const Landing: FC = () => (

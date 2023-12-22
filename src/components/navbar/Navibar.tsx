@@ -11,9 +11,9 @@ import {
 } from '@nextui-org/react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import ProfileButton from '@/app/_home/ProfileButton';
-import ThemeButton from './ThemeButton';
-import Logo from './Logo';
+import ProfileButton from '@/components/navbar/ProfileButton';
+import ThemeButton from '../ThemeButton';
+import Logo from '../Logo';
 
 const Navibar: FC = () => {
   const { data: session } = useSession();
