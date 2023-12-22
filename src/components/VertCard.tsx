@@ -38,8 +38,8 @@ const VertCard: FC = () => {
       ref={ref}
     >
       <Card className='w-full h-full'>
-        <CardBody className='flex items-center justify-center text-center'>
-          <p className='text-5xl font-bold'>
+        <CardBody className='flex items-center justify-center text-center p-10 sm:p-0'>
+          <p className='sm:text-5xl text-3xl font-bold'>
             Generate <br />
             your very <br /> own <br />
             <span className='text-[#07F468]'>playlists</span> <br />

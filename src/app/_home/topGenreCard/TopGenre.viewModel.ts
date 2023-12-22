@@ -3,7 +3,6 @@ import { useSession } from 'next-auth/react';
 
 const TopGenreViewModel = () => {
   const { data: session } = useSession();
-
   const { data: topArtists, isLoading } = useGetTopArtists(
     session?.accessToken ?? '',
     'medium_term',
