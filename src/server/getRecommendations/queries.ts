@@ -21,13 +21,13 @@ const fetchRecommendations = async (
     currentTrackIDs.length > 0
   ) {
     url += `seed_artists=${
-      allTimeArtistIDs[Math.floor(Math.random() * allTimeArtistIDs.length)].id
+      allTimeArtistIDs[Math.floor(Math.random() * allTimeArtistIDs.length)]?.id
     },${
-      currentArtistIDs[Math.floor(Math.random() * currentArtistIDs.length)].id
+      currentArtistIDs[Math.floor(Math.random() * currentArtistIDs.length)]?.id
     }&seed_tracks=${
-      allTimeTrackIDs[Math.floor(Math.random() * allTimeTrackIDs.length)].id
+      allTimeTrackIDs[Math.floor(Math.random() * allTimeTrackIDs.length)]?.id
     },${
-      currentTrackIDs[Math.floor(Math.random() * currentTrackIDs.length)].id
+      currentTrackIDs[Math.floor(Math.random() * currentTrackIDs.length)]?.id
     }`;
   } else if (
     allTimeArtistIDs.length > 0 &&
@@ -36,15 +36,15 @@ const fetchRecommendations = async (
     currentTrackIDs.length <= 0
   ) {
     url += `seed_artists=${
-      allTimeArtistIDs[Math.floor(Math.random() * allTimeArtistIDs.length)].id
+      allTimeArtistIDs[Math.floor(Math.random() * allTimeArtistIDs.length)]?.id
     }&seed_tracks=${
-      allTimeTrackIDs[Math.floor(Math.random() * allTimeTrackIDs.length)].id
+      allTimeTrackIDs[Math.floor(Math.random() * allTimeTrackIDs.length)]?.id
     }`;
   } else {
     url += `seed_artists=${
-      currentArtistIDs[Math.floor(Math.random() * currentArtistIDs.length)].id
+      currentArtistIDs[Math.floor(Math.random() * currentArtistIDs.length)]?.id
     }&seed_tracks=${
-      currentTrackIDs[Math.floor(Math.random() * currentTrackIDs.length)].id
+      currentTrackIDs[Math.floor(Math.random() * currentTrackIDs.length)]?.id
     }`;
   }
 
