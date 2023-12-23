@@ -4,14 +4,14 @@ import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 
 interface RunningTextProps {
-  length?: string;
-  overflow?: string;
-  text?: string;
+  length: string;
+  overflow: string;
+  text: string;
 }
 
 const RunningText: FC<RunningTextProps> = ({ length, overflow, text }) => (
   <motion.div
-    className={`flex relative border-black dark:border-white border-y-1 w-[${length}] overflow-${overflow}`}
+    className={`flex relative border-black dark:border-white border-y-1 w-[${length}] overflow-${overflow} h-[30px] sm:h-[50px]`}
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{
@@ -32,7 +32,7 @@ const RunningText: FC<RunningTextProps> = ({ length, overflow, text }) => (
       }}
     >
       <motion.div
-        className='w-[100%] text-[2rem] font-bold text-left whitespace-nowrap text-black dark:text-white'
+        className='w-[100%] sm:text-[2rem] font-bold text-left whitespace-nowrap text-black dark:text-white'
         initial={{ x: '0%' }}
         animate={{ x: '-50%' }}
         transition={{

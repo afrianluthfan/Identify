@@ -4,9 +4,11 @@ import { Track } from 'spotify-types';
 
 const baseURL = 'https://api.spotify.com/v1/me';
 
-const fetchTopTracks = async (token: string, limit: string) => {
+type Term = 'short_term' | 'medium_term' | 'long_term';
+
+const fetchTopTracks = async (token: string, term: Term, limit: string) => {
   const { data } = await axios.get(
-    `${baseURL}/top/tracks?time_range=medium_term&limit=${limit}`,
+    `${baseURL}/top/tracks?time_range=${term}&limit=${limit}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -17,12 +19,12 @@ const fetchTopTracks = async (token: string, limit: string) => {
   return data.items as Track[];
 };
 
-const useGetTopTracks = (accessToken: string, limit: string) =>
+const useGetTopTracks = (accessToken: string, term: Term, limit: string) =>
   useQuery({
-    queryKey: ['tracks', accessToken, limit],
+    queryKey: ['tracks', accessToken, term, limit],
     queryFn: ({ queryKey }) => {
-      const [, token, fetchLimit] = queryKey;
-      return fetchTopTracks(token, fetchLimit);
+      const [, token, fetchTerm, fetchLimit] = queryKey;
+      return fetchTopTracks(token ?? '', fetchTerm as Term, fetchLimit ?? '');
     },
   });
 

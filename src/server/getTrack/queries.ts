@@ -19,7 +19,7 @@ const useGetTrack = (token: string, id: string) =>
     queryKey: ['track', token, id],
     queryFn: ({ queryKey }) => {
       const [, accessToken, trackID] = queryKey;
-      return fetchTrack(accessToken, trackID);
+      return fetchTrack(accessToken ?? '', trackID ?? '');
     },
   });
 

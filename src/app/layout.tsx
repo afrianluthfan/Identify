@@ -3,19 +3,20 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { getServerSession } from 'next-auth';
-import SessionProvider from '@/utils/SessionProvider';
-import ReactQueryProvider from '@/utils/ReactQueryProvider';
 import { authOptions } from '@/server/authOptions';
-import UIProvider from '@/utils/UIProvider';
-import PageFooter from '@/components/sections/PageFooter';
-import Navibar from '../components/Navibar';
-import ThemeProvider from '../utils/ThemeProvider';
+import PageFooter from '@/components/PageFooter';
+import SessionProvider from '@/providers/SessionProvider';
+import ReactQueryProvider from '@/providers/ReactQueryProvider';
+import UIProvider from '@/providers/UIProvider';
+import ThemeProvider from '@/providers/ThemeProvider';
+import { Toaster } from 'sonner';
+import Navibar from '../components/navbar/Navibar';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Uncoverify',
-  description: 'Uncover your musical aura',
+  title: 'Identify',
+  description: 'Identify your musical affinities',
 };
 
 interface RootLayoutProps {
@@ -36,6 +37,7 @@ const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
                 defaultTheme='system'
                 enableSystem
               >
+                <Toaster position='top-left' />
                 <Navibar />
                 {children}
                 <PageFooter />
