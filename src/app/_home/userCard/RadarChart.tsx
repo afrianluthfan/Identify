@@ -106,27 +106,7 @@ const RadarChartComponent: FC = () => {
     },
   ];
   return (
-    <>
-      {/* light mode */}
-      <ResponsiveContainer width='100%' height='100%' className='dark:hidden'>
-        <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
-          {/* Jaring graf */}
-          <PolarGrid stroke='#171717' />
-          {/* Outline graf dan tulisan */}
-          <PolarAngleAxis dataKey='subject' stroke='#000000' />
-          <PolarRadiusAxis angle={120} stroke='#000000' />
-          <Radar
-            name='Mike'
-            dataKey='A'
-            // Stroke blob data
-            stroke='#FFFFFF'
-            // Fill blob data
-            fill='#000000'
-            fillOpacity={0.5}
-            fontSize={30}
-          />
-        </RadarChart>
-      </ResponsiveContainer>
+    <div className='sm:flex-none flex items-center justify-center h-[70%] sm:h-full w-full'>
       {/* dark mode */}
       <ResponsiveContainer
         width='100%'
@@ -137,7 +117,7 @@ const RadarChartComponent: FC = () => {
           {/* Jaring graf */}
           <PolarGrid stroke='#FFFFFF' />
           {/* Outline graf dan tulisan */}
-          <PolarAngleAxis dataKey='subject' stroke='#FFFFFF' />
+          <PolarAngleAxis dataKey='subject' stroke='#FFFFFF' radius={0.1} />
           <PolarRadiusAxis angle={120} />
           <Radar
             name='Mike'
@@ -151,7 +131,27 @@ const RadarChartComponent: FC = () => {
           />
         </RadarChart>
       </ResponsiveContainer>
-    </>
+      {/* light mode */}
+      <ResponsiveContainer width='100%' height='100%' className='dark:hidden'>
+        <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
+          {/* Jaring graf */}
+          <PolarGrid stroke='#171717' />
+          {/* Outline graf dan tulisan */}
+          <PolarAngleAxis dataKey='subject' stroke='#FFFF' />
+          <PolarRadiusAxis angle={120} stroke='#000000' />
+          <Radar
+            name='Mike'
+            dataKey='A'
+            // Stroke blob data
+            stroke='#FFFFFF'
+            // Fill blob data
+            fill='#000000'
+            fillOpacity={0.5}
+            fontSize={30}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
