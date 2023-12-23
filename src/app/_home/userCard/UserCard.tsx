@@ -4,7 +4,14 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Avatar, Button, Card, CardBody, CardHeader } from '@nextui-org/react';
+import {
+  Avatar,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+} from '@nextui-org/react';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { useToPng } from '@hugocxl/react-to-image';
@@ -72,19 +79,31 @@ const UserCard: FC = () => {
           </CardHeader>
           <CardBody className='relative overflow-hidden flex'>
             <div className='flex flex-col sm:flex-row sm:justify-between'>
-              <div className='border border-black dark:border-white -order-first sm:order-first flex items-center justify-center'>
-                <p>Content</p>
+              <div className='-order-first sm:order-first flex items-center justify-center sm:mt-0 p-8 sm:p-12 sm:h-full h-[35%]'>
+                <Card className='p-5 sm:p-10 sm:h-full'>
+                  <CardHeader className='font-bold sm:text-lg'>
+                    {session?.user?.name} seems to enjoy music that are ------.
+                  </CardHeader>
+                  <CardBody className='text-[12px] sm:text-medium'>
+                    Well, from what we can see, your music sounds pretty
+                    -------. Not to sound judgemental, but you really seem like
+                    the embodiment of ---- itself.
+                  </CardBody>
+                  <CardFooter className='font-bold text-sm sm:text-medium'>
+                    Quite the ----, I see.
+                  </CardFooter>
+                </Card>
               </div>
               <div className='sm:w-[600px] h-[400px] relative'>
-                <div className='sm:w-[600px] h-[400px] bg-white bg-opacity-[10%] rounded-3xl sm:rounded-l-3xl backdrop-blur-lg'>
+                <div className='flex items-center justify-center sm:w-[600px] h-[400px] bg-white bg-opacity-[10%] rounded-3xl sm:rounded-l-3xl backdrop-blur-lg'>
                   <RadarChartComponent />
                 </div>
               </div>
             </div>
-            <div className='absolute flex w-[93.5%] bottom-0 left-0 mx-10'>
+            <div className='absolute flex w-[93.5%] bottom-0 -left-5 sm:left-0 mx-10'>
               <div className='relative flex justify-between w-full'>
                 {/* Issue Date */}
-                <div className='flex font-bold text-xl w-96'>
+                <div className='flex sm:font-bold sm:text-xl w-96'>
                   Issued at{' '}
                   {waktu.toLocaleDateString('en-US', {
                     day: 'numeric',

@@ -3,15 +3,42 @@
 
 'use client';
 
-import React, { FC } from 'react';
+import React, { FC, useRef, useEffect } from 'react';
 import { Button, Card, CardBody } from '@nextui-org/react';
 import Image from 'next/image';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import RecommendationSkeleton from '@/components/skeletons/RecommendationSkeleton';
 import RecommendationCardViewModel from './RecommendationCard.viewModel';
 
 const RecommendationsCard: FC = () => {
   const { Recommendations, isLoading, handleRefresh } =
     RecommendationCardViewModel();
+
+  const gerak = {
+    hidden: {
+      y: 50,
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
+  const ref = useRef(null);
+  const inView = useInView(ref);
+  const animationControl = useAnimation();
+
+  if (inView) {
+    animationControl.start('visible');
+  }
+
+  useEffect(() => {
+    if (inView) {
+      handleRefresh();
+    }
+  }, [inView, handleRefresh]);
+
   return (
     <div>
       <div className='flex flex-col sm:flex-row sm:justify-between mb-5'>
@@ -23,7 +50,18 @@ const RecommendationsCard: FC = () => {
           Refresh Suggestions
         </Button>
       </div>
-      <div className='grid grid-cols-1 gap-4'>
+      <motion.div
+        className='grid grid-cols-1 gap-4'
+        variants={gerak}
+        initial='hidden'
+        animate={animationControl}
+        transition={{
+          delay: 0,
+          duration: 2,
+          ease: 'easeInOut',
+        }}
+        ref={ref}
+      >
         {isLoading ? (
           <>
             <RecommendationSkeleton />
@@ -67,7 +105,7 @@ const RecommendationsCard: FC = () => {
             </Card>
           ))
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };
