@@ -80,6 +80,7 @@ const RecommendationsCard: FC = () => {
             >
               <CardBody>
                 <div className='flex overflow-hidden gap-3'>
+                  {/* @ts-ignore */}
                   <Image
                     alt={track.name}
                     className='object-cover rounded-lg'
