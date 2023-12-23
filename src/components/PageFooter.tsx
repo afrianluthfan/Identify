@@ -5,9 +5,9 @@ import { buttonVariants } from './ui/button';
 import Logo from './Logo';
 
 const PageFooter: FC = () => (
-  <footer className='flex h-[120px] w-full items-center justify-center'>
-    <div className='w-full flex gap-[100px] p-[60px] ml-[40px]'>
-      <div>
+  <footer className='flex h-[120px] w-full items-center justify-center mt-3'>
+    <div className='w-full flex gap-[50px] p-[30px] sm:gap-[100px] sm:p-[60px] sm:ml-[40px]'>
+      <div className='w-[200px]'>
         <Logo />
         <p className='text-tiny mt-1'>Identify your musical affinities</p>
         <Link

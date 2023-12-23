@@ -62,6 +62,7 @@ const RecommendationsCard: FC = () => {
                       ))}
                     </p>
                   </div>
+                </div>
               </CardBody>
             </Card>
           ))

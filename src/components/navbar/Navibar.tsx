@@ -12,6 +12,7 @@ import {
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import ProfileButton from '@/components/navbar/ProfileButton';
+import { lexn } from '@/Font';
 import ThemeButton from '../ThemeButton';
 import Logo from '../Logo';
 
@@ -54,24 +55,30 @@ const Navibar: FC = () => {
               <Logo />
             </NavbarBrand>
           </NavbarContent>
-          <NavbarContent className='hidden sm:flex gap-4' justify='center'>
+          <NavbarContent className='hidden sm:flex gap-4' justify='end'>
             <NavbarItem>
-              <Link color='foreground' href='#home'>
-                Home
+              <Link
+                color='foreground'
+                href='#home'
+                className={`${lexn.className} font-semibold`}
+              >
+                home
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link color='foreground' href='#about'>
-                About
+              <Link
+                color='foreground'
+                href='/about'
+                className={`${lexn.className} font-semibold`}
+              >
+                about
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link color='foreground' href='#footer'>
-                Contact Us
-              </Link>
+              <ThemeButton />
             </NavbarItem>
           </NavbarContent>
-          <NavbarContent justify='end'>
+          <NavbarContent justify='end' className='sm:hidden'>
             <NavbarItem>
               <ThemeButton />
             </NavbarItem>

@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
-import { lexn } from '@/Font';
+import { StretchPro } from '@/Font';
 import SignInButton from './SignInButton';
 
 const HomeText: FC = () => {
@@ -18,9 +18,9 @@ const HomeText: FC = () => {
   };
 
   return (
-    <div className='flex flex-col relative items-center justify-center h-full'>
+    <div className='flex flex-col relative items-center justify-center h-full space-y-5'>
       <motion.h1
-        className={`text-5xl font-bold b-5 text-black dark:text-white ${lexn.className}`}
+        className={`text-5xl text-black dark:text-white ${StretchPro.className}`}
         variants={gerak}
         initial='hidden'
         animate='visible'
@@ -33,7 +33,7 @@ const HomeText: FC = () => {
         &quot;Your <span style={{ color: '#07F468' }}>ID</span>, please.&quot;
       </motion.h1>
       <motion.p
-        className='text-l font-light mb-8 block whitespace-pre text-center text-black dark:text-white'
+        className='text-medium font-light block whitespace-pre text-center text-black dark:text-white'
         variants={gerak}
         initial='hidden'
         animate='visible'

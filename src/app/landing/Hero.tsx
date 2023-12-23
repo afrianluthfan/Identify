@@ -1,20 +1,18 @@
 import React, { FC } from 'react';
-import { Chip } from '@nextui-org/react';
 import HomeText from '../../components/HomeText';
 import RunningText from '../../components/RunningText';
 
 const Hero: FC = () => (
   <section
     id='home'
-    className='h-[1080px] dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center'
+    className='h-[900px] dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex justify-center items-center'
   >
     <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]' />
-    <div className=' my-52'>
-      <div className='mt-[100px]'>
+    <div>
+      <div>
         <HomeText />
-        <Chip size='lg'>Chip</Chip>
       </div>
-      <div className='mt-[275px]'>
+      <div className='mt-[200px]'>
         <RunningText
           length='100%'
           overflow='hidden'
