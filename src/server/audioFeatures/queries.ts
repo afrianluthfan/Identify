@@ -19,7 +19,7 @@ const useAudioFeatures = (token: string, ids: string) =>
     queryKey: ['audioFeatures', token, ids],
     queryFn: ({ queryKey }) => {
       const [, accessToken, trackID] = queryKey;
-      return fetchAudioFeatures(accessToken, trackID);
+      return fetchAudioFeatures(accessToken ?? '', trackID ?? '');
     },
   });
 
