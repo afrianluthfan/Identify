@@ -71,7 +71,7 @@ const RecommendationsCard: FC = () => {
             <RecommendationSkeleton />
           </>
         ) : (
-          Recommendations?.tracks?.map((track) => (
+          Recommendations?.tracks?.map((track: any) => (
             <Card
               isFooterBlurred
               radius='lg'
