@@ -24,7 +24,7 @@ const useGetTopArtists = (accessToken: string, term: Term, limit: string) =>
     queryKey: ['artists', accessToken, term, limit],
     queryFn: ({ queryKey }) => {
       const [, token, fetchTerm, fetchLimit] = queryKey;
-      return fetchTopArtists(token, fetchTerm as Term, fetchLimit);
+      return fetchTopArtists(token ?? '', fetchTerm as Term, fetchLimit ?? '');
     },
   });
 

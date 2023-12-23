@@ -24,7 +24,7 @@ const useGetTopTracks = (accessToken: string, term: Term, limit: string) =>
     queryKey: ['tracks', accessToken, term, limit],
     queryFn: ({ queryKey }) => {
       const [, token, fetchTerm, fetchLimit] = queryKey;
-      return fetchTopTracks(token, fetchTerm as Term, fetchLimit);
+      return fetchTopTracks(token ?? '', fetchTerm as Term, fetchLimit ?? '');
     },
   });
 
