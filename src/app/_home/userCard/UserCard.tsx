@@ -1,46 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-nested-ternary */
 
 'use client';
 
 import React, { FC } from 'react';
-import {
-  Avatar,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-} from '@nextui-org/react';
+import { Avatar, Button, Card, CardBody, CardHeader } from '@nextui-org/react';
 import Image from 'next/image';
-import { useSession } from 'next-auth/react';
-import { useToPng } from '@hugocxl/react-to-image';
 import RunningText from '@/components/RunningText';
-import { toast } from 'sonner';
 import RadarChartComponent from './RadarChart';
+import UserCardViewModel from './UserCard.viewModel';
 
 const UserCard: FC = () => {
-  const { data: session } = useSession();
-
-  const waktu = new Date();
-
-  const [_, convert, ref] = useToPng<HTMLDivElement>({
-    quality: 1,
-    onLoading() {
-      toast.loading('Loading...');
-    },
-    onSuccess: (data) => {
-      const link = document.createElement('a');
-      link.download = 'card.png';
-      link.href = data;
-      link.click();
-    },
-    onError: (error) => {
-      toast.error(error);
-    },
-  });
-
-  const arrayText = Array(40).fill(`${session?.user?.name}`).join(' ');
+  const { session, waktu, arrayText, convert, ref, scaledFeatures, target } =
+    UserCardViewModel();
 
   return (
     <>
@@ -82,21 +53,86 @@ const UserCard: FC = () => {
               <div className='-order-first sm:order-first flex items-center justify-center sm:mt-0 p-8 sm:p-12 sm:h-full h-[35%]'>
                 <Card className='p-5 sm:p-10 sm:h-full'>
                   <CardHeader className='font-bold sm:text-lg'>
-                    {session?.user?.name} seems to enjoy music that are ------.
+                    {session?.user?.name} seems to enjoy music that are
+                    <p>
+                      {target === 1 ? (
+                        <span>&nbsp;happy</span>
+                      ) : target === 2 ? (
+                        <span>&nbsp;danceable</span>
+                      ) : target === 3 ? (
+                        <span>&nbsp;energetic</span>
+                      ) : target === 4 ? (
+                        <span>&nbsp;accoustic</span>
+                      ) : target === 5 ? (
+                        <span>&nbsp;speechy</span>
+                      ) : (
+                        <span>....</span>
+                      )}
+                    </p>
+                    .
                   </CardHeader>
                   <CardBody className='text-[12px] sm:text-medium'>
-                    Well, from what we can see, your music sounds pretty
-                    -------. Not to sound judgemental, but you really seem like
-                    the embodiment of ---- itself.
+                    <p>
+                      Well, from what we can see, your music sound pretty
+                      {target === 1 ? (
+                        <span>&nbsp;joyous.</span>
+                      ) : target === 2 ? (
+                        <span>&nbsp;groovy.</span>
+                      ) : target === 3 ? (
+                        <span>&nbsp;full of energy.</span>
+                      ) : target === 4 ? (
+                        <span>&nbsp;organic.</span>
+                      ) : target === 5 ? (
+                        <span>&nbsp;full of vocals</span>
+                      ) : (
+                        <span>....</span>
+                      )}
+                      &nbsp;Not to sound judgemental, but you really seem like
+                      the embodiment of
+                      {target === 1 ? (
+                        <span>&nbsp;happiness</span>
+                      ) : target === 2 ? (
+                        <span>&nbsp;dance</span>
+                      ) : target === 3 ? (
+                        <span>&nbsp;hype</span>
+                      ) : target === 4 ? (
+                        <span>&nbsp;life</span>
+                      ) : target === 5 ? (
+                        <span>&nbsp;vocal</span>
+                      ) : (
+                        <span>....</span>
+                      )}
+                      &nbsp;itself.
+                    </p>
+                    <p>
+                      Quite the
+                      {target === 1 ? (
+                        <span>&nbsp;rapture</span>
+                      ) : target === 2 ? (
+                        <span>&nbsp;moving sounds</span>
+                      ) : target === 3 ? (
+                        <span>&nbsp;hypeman you are</span>
+                      ) : target === 4 ? (
+                        <span>&nbsp;lively persona</span>
+                      ) : target === 5 ? (
+                        <span>&nbsp;vocal person you are</span>
+                      ) : (
+                        <span>....</span>
+                      )}
+                      , I see.
+                    </p>
                   </CardBody>
-                  <CardFooter className='font-bold text-sm sm:text-medium'>
-                    Quite the ----, I see.
-                  </CardFooter>
                 </Card>
               </div>
               <div className='sm:w-[600px] h-[400px] relative'>
                 <div className='flex items-center justify-center sm:w-[600px] h-[400px] bg-white bg-opacity-[10%] rounded-3xl sm:rounded-l-3xl backdrop-blur-lg'>
-                  <RadarChartComponent />
+                  <RadarChartComponent
+                    scaledAccousticness={scaledFeatures.accousticness}
+                    scaledDanceability={scaledFeatures.danceability}
+                    scaledEnergy={scaledFeatures.energy}
+                    scaledSpeechiness={scaledFeatures.speechiness}
+                    scaledValence={scaledFeatures.valence}
+                  />
                 </div>
               </div>
             </div>

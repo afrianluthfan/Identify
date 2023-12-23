@@ -43,7 +43,7 @@ const About: FC = () => (
               <div className='flex my-3 gap-2'>
                 <Link
                   className={buttonVariants({ variant: 'outline' })}
-                  href='/github'
+                  href='https://github.com/aliezan'
                 >
                   <>
                     <Image
@@ -64,7 +64,7 @@ const About: FC = () => (
                 </Link>
                 <Link
                   className={buttonVariants({ variant: 'outline' })}
-                  href='/github'
+                  href='https://www.linkedin.com/in/muhammad-alieza-nuriman/'
                 >
                   <>
                     <Image
@@ -85,7 +85,7 @@ const About: FC = () => (
                 </Link>
                 <Link
                   className={buttonVariants({ variant: 'outline' })}
-                  href='/github'
+                  href='mailto:muhammadalieza4@gmail.com'
                 >
                   <>
                     <Image
@@ -129,7 +129,7 @@ const About: FC = () => (
               <div className='flex my-3 gap-2'>
                 <Link
                   className={buttonVariants({ variant: 'outline' })}
-                  href='/github'
+                  href='https://github.com/afrianluthfan'
                 >
                   <>
                     <Image
@@ -150,7 +150,7 @@ const About: FC = () => (
                 </Link>
                 <Link
                   className={buttonVariants({ variant: 'outline' })}
-                  href='/github'
+                  href='https://www.linkedin.com/in/afrian-luthfan/'
                 >
                   <>
                     <Image
@@ -171,7 +171,7 @@ const About: FC = () => (
                 </Link>
                 <Link
                   className={buttonVariants({ variant: 'outline' })}
-                  href='/github'
+                  href='mailto:afrian.luthfan@gmail.com'
                 >
                   <>
                     <Image
@@ -229,7 +229,7 @@ const About: FC = () => (
               Privacy Policy
             </h1>
             <p className='text-medium'>
-              We as developers don&apos;t keep any forms of user&paos;s personal
+              We as developers don&apos;t keep any forms of user&apos;s personal
               data since those data are handled securely by Spotify API. The
               source code for this website is available for the public to see on
               the GitHub repository that we have provided.

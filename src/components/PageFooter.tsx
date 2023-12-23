@@ -35,10 +35,7 @@ const PageFooter: FC = () => (
           <p className='text-small dark:text-white/60 text-black/60'>About</p>
           <div className='mt-2 space-y-1'>
             <Link className='hover:underline block text-tiny' href='/about'>
-              About this app
-            </Link>
-            <Link className='hover:underline text-tiny block' href='/privacy'>
-              Privacy Policy
+              About
             </Link>
           </div>
         </div>

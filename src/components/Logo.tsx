@@ -1,13 +1,18 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Logo = () => (
   <>
     <div className='dark:hidden'>
-      <Image src='/logo-dark.svg' alt='logo' width={150} height={150} />
+      <Link href='/'>
+        <Image src='/logo-dark.svg' alt='logo' width={150} height={150} />
+      </Link>
     </div>
 
     <div className='hidden dark:block'>
-      <Image src='/logo.svg' alt='logo' width={150} height={150} />
+      <Link href='/'>
+        <Image src='/logo.svg' alt='logo' width={150} height={150} />
+      </Link>
     </div>
   </>
 );
