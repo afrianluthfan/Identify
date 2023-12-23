@@ -1,4 +1,4 @@
-import { SimplifiedTrack as SpotifySimplifiedTrack } from 'spotify-web-api-ts/types/types/SpotifyTypes';
+import { SimplifiedTrack as SpotifySimplifiedTrack } from 'spotify-types';
 
 export interface SimplifiedTrack extends SpotifySimplifiedTrack {
   album?: {
