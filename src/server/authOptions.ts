@@ -73,7 +73,7 @@ export const authOptions: NextAuthOptions = {
           accessTokenExpires: account.expires_at * 1000,
           user: {
             ...user,
-            country: profile.country, // Add this line
+            country: profile.country,
           },
         };
       }

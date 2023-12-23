@@ -59,7 +59,7 @@ const Navibar: FC = () => {
             <NavbarItem>
               <Link
                 color='foreground'
-                href='#home'
+                href='/'
                 className={`${lexn.className} font-semibold`}
               >
                 home
@@ -85,18 +85,13 @@ const Navibar: FC = () => {
           </NavbarContent>
           <NavbarMenu>
             <NavbarItem>
-              <Link color='foreground' href='#home'>
-                Home
+              <Link color='foreground' href='/'>
+                home
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link color='foreground' href='#home'>
-                About
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Link color='foreground' href='#home'>
-                Contact Us
+              <Link color='foreground' href='/about'>
+                about
               </Link>
             </NavbarItem>
           </NavbarMenu>
