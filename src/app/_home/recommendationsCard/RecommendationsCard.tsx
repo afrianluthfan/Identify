@@ -3,7 +3,7 @@
 
 'use client';
 
-import React, { FC, useRef, useEffect } from 'react';
+import React, { FC, useRef } from 'react';
 import { Button, Card, CardBody } from '@nextui-org/react';
 import Image from 'next/image';
 import { motion, useAnimation, useInView } from 'framer-motion';
@@ -32,12 +32,6 @@ const RecommendationsCard: FC = () => {
   if (inView) {
     animationControl.start('visible');
   }
-
-  useEffect(() => {
-    if (inView) {
-      handleRefresh();
-    }
-  }, [inView, handleRefresh]);
 
   return (
     <div>
