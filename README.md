@@ -1,6 +1,6 @@
 # IdentiFy - Your Spotify Music Identifier
 
-## THIS PROJECT NOT YET REVIEWED TO GET EXTENSION REQUESTS,
+## THIS PROJECT NOT YET REVIEWED TO GET EXTENSION REQUESTS BY SPOTIFY,
 So logging in via deployment link not work, if you want to open this project, consider clone to your machine instead.
 
 ## Project Description
