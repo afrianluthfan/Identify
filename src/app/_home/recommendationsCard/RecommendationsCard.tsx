@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-confusing-arrow */
 
@@ -58,11 +59,9 @@ const RecommendationsCard: FC = () => {
       >
         {isLoading ? (
           <>
-            <RecommendationSkeleton />
-            <RecommendationSkeleton />
-            <RecommendationSkeleton />
-            <RecommendationSkeleton />
-            <RecommendationSkeleton />
+            {Array.from({ length: 5 }).map((_, index) => (
+              <RecommendationSkeleton key={index} />
+            ))}
           </>
         ) : (
           Recommendations?.tracks?.map((track: any) => (
@@ -82,7 +81,7 @@ const RecommendationsCard: FC = () => {
                     src={track?.album?.images[0]?.url ?? ''}
                     width={176}
                   />
-                  <div className='before:bg-white/10 border-white/20 border-2 overflow-hidden before:rounded-xl rounded-large w-[300px] sm:w-[800px] p-4'>
+                  <div className='before:bg-white/10 border-white/20 border-2 overflow-hidden before:rounded-xl rounded-large w-[300px] sm:w-[1000px] p-4'>
                     <p className='text-xl sm:text-3xl text-black/80 dark:text-white/80 font-bold'>
                       {track.name}
                     </p>

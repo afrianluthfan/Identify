@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-confusing-arrow */
 
@@ -23,16 +24,9 @@ const TracksCard: FC = () => {
     <div className='grid grid-cols-2 sm:grid-cols-5 gap-4'>
       {isLoading ? (
         <>
-          <TrackSkeleton />
-          <TrackSkeleton />
-          <TrackSkeleton />
-          <TrackSkeleton />
-          <TrackSkeleton />
-          <TrackSkeleton />
-          <TrackSkeleton />
-          <TrackSkeleton />
-          <TrackSkeleton />
-          <TrackSkeleton />
+          {Array.from({ length: 10 }).map((_, index) => (
+            <TrackSkeleton key={index} />
+          ))}
         </>
       ) : (
         data?.map((track) => (
