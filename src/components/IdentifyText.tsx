@@ -27,7 +27,7 @@ const IdentifyText: FC = () => {
 
   return (
     <motion.div
-      className='w-full h-full text-5xl font-bold'
+      className='h-full w-full text-5xl font-bold'
       variants={gerak}
       initial='hidden'
       animate={animationControl}
@@ -38,8 +38,8 @@ const IdentifyText: FC = () => {
       }}
       ref={ref}
     >
-      <Card className='flex w-full h-full items-center justify-center'>
-        <div className='relative w-fill max-w-[200px] aspect-[1/1] '>
+      <Card className='flex h-full w-full items-center justify-center p-3'>
+        <div className='w-fill relative aspect-[1/1] max-w-[200px] '>
           <Image
             src='https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg'
             alt='spotify-icon'

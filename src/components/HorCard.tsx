@@ -40,9 +40,9 @@ const HorCard: FC = () => {
       // Pass the ref to the motion component
       ref={ref}
     >
-      <Card className='w-full h-full'>
-        <CardBody className='flex items-center justify-center text-center sm:p-0 p-10'>
-          <p className='sm:text-5xl text-3xl font-bold'>
+      <Card>
+        <CardBody className='flex items-center justify-center p-5 text-center'>
+          <p className='text-xl font-bold sm:text-5xl'>
             Generate your very own{' '}
             <span className='text-[#07F468]'>
               <br />

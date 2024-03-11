@@ -8,24 +8,24 @@ import HorCard from '../../components/HorCard';
 const Desc: FC = () => (
   <section
     id='desc'
-    className='flex sm:items-center align-middle justify-center w-full sm:h-[1080px] h-auto sm:mb-0 mb-12'
+    className='mb-12 flex h-auto w-full justify-center align-middle sm:mb-0 sm:h-[1080px] sm:items-center'
   >
-    <div className='flex flex-col sm:grid sm:grid-cols-4 sm:grid-rows-2 w-full sm:h-[1080px] h-auto sm:pt-0 pt-16'>
-      <div className='flex items-center justify-center border-[2px] sm:border-none sm:border border-x-0 border-b-0 sm:col-span-2 text-black border-black dark:border-white dark:text-white p-8 '>
+    <div className='flex h-auto w-full flex-col gap-3 sm:grid sm:h-[1080px] sm:grid-cols-4 sm:grid-rows-2'>
+      <div className='flex items-center justify-center border-x-0 border-b-0 border-black px-8 text-black dark:border-white dark:text-white sm:col-span-2 sm:border sm:border-none '>
         <DescCard />
       </div>
-      <div className='flex items-center justify-center sm:border-none sm:border-l-0 text-black border-black dark:border-white dark:text-white p-8'>
+      <div className='flex items-center justify-center border-black px-8 text-black dark:border-white dark:text-white sm:border-l-0 sm:border-none'>
         <IdentifyText />
       </div>
-      <div className='flex items-center justify-center sm:border-none sm:border-l-0 sm:row-span-2 text-black border-black dark:border-white dark:text-white p-8'>
+      <div className='flex items-center justify-center border-black px-8 text-black dark:border-white dark:text-white sm:row-span-2 sm:border-l-0 sm:border-none'>
         <VertCard />
       </div>
-      <div className='flex relative sm:border-none sm:border-l-0 sm:border-t-0 sm:border-r-0 text-black border-black dark:border-white dark:text-white p-8'>
+      <div className='relative flex hidden border-black px-8 text-black dark:border-white dark:text-white sm:block sm:border-l-0 sm:border-r-0 sm:border-t-0 sm:border-none'>
         <div className='absolute right-[-10px] top-16'>
           <PixelArt />
         </div>
       </div>
-      <div className='flex items-center justify-center sm:border-none sm:border-l-0 sm:border-t-0 border-b col-span-2 text-black border-black dark:border-white dark:text-white p-8'>
+      <div className='col-span-2 flex items-center justify-center px-8 text-black dark:border-white dark:text-white sm:border-l-0 sm:border-t-0 sm:border-none'>
         <HorCard />
       </div>
     </div>
