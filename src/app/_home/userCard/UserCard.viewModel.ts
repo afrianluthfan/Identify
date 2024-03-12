@@ -7,7 +7,6 @@ import { useToPng } from '@hugocxl/react-to-image';
 import { toast } from 'sonner';
 import useGetTopTracks from '@/server/topTracks/queries';
 import useAudioFeatures from '@/server/audioFeatures/queries';
-import { m } from 'framer-motion';
 
 const UserCardViewModel = () => {
   const { data: session } = useSession();
@@ -18,12 +17,16 @@ const UserCardViewModel = () => {
     quality: 1,
     onLoading() {
       toast.loading('Loading...');
+      setTimeout(() => {
+        toast.dismiss();
+      }, 2000);
     },
     onSuccess: (data) => {
       const link = document.createElement('a');
       link.download = 'card.png';
       link.href = data;
       link.click();
+      toast.success('Downloaded!');
     },
     onError: (error) => {
       toast.error(error);
