@@ -26,7 +26,7 @@ const VertCard: FC = () => {
 
   return (
     <motion.div
-      className='w-full h-full'
+      className='h-full w-full'
       variants={gerak}
       initial='hidden'
       animate={animationControl}
@@ -37,15 +37,12 @@ const VertCard: FC = () => {
       }}
       ref={ref}
     >
-      <Card className='w-full h-full'>
-        <CardBody className='flex items-center justify-center text-center p-10 sm:p-0'>
-          <p className='sm:text-5xl text-3xl font-bold'>
-            Generate <br />
-            your very <br /> own <br />
-            <span className='text-[#07F468]'>playlists</span> <br />
-            based on <br />
-            <span className='text-[#07F468]'>Spotify&apos;s</span> <br />
-            algorithm.
+      <Card>
+        <CardBody className='flex items-center justify-center p-5 text-center sm:p-0'>
+          <p className='text-xl font-bold sm:text-5xl'>
+            Generate your very own{' '}
+            <span className='text-[#07F468]'>playlists</span> based on <br />
+            <span className='text-[#07F468]'>Spotify&apos;s</span> algorithm.
           </p>
         </CardBody>
       </Card>

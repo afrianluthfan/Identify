@@ -27,7 +27,7 @@ const DescCard: FC = () => {
 
   return (
     <motion.div
-      className='w-full h-full'
+      className='h-full w-full'
       variants={gerak}
       initial='hidden'
       animate={animationControl}
@@ -38,22 +38,22 @@ const DescCard: FC = () => {
       }}
       ref={ref}
     >
-      <Card className='w-full h-full'>
-        <div className='absolute right-[-500px] w-[750px] h-[300px] rotate-[95deg] bg-[#FF0095] blur-[80px]' />
-        <div className='absolute left-64 bottom-[-500px] rounded-[100%] w-[900px] h-[750px] rotate-[-10deg] bg-[#8349FF] blur-[80px]' />
-        <div className='absolute right-[-200px] bottom-[-350px] rounded-[100%] w-[750px] h-96 rotate-[-30deg] bg-[#FFCDFF] blur-[80px]' />
-        <div className='absolute bottom-[-30px] rounded-[100%] w-[600px] h-48 rotate-0 bg-[#0013FF] blur-[80px]' />
-        <div className='absolute left-24 bottom-[-300px] rounded-[100%] w-96 h-96 rotate-90 bg-[#00FFFF] blur-3xl' />
+      <Card className='h-full w-full p-4'>
+        <div className='absolute right-[-500px] h-[300px] w-[750px] rotate-[95deg] bg-[#FF0095] blur-[80px]' />
+        <div className='absolute bottom-[-500px] left-64 h-[750px] w-[900px] rotate-[-10deg] rounded-[100%] bg-[#8349FF] blur-[80px]' />
+        <div className='absolute bottom-[-350px] right-[-200px] h-96 w-[750px] rotate-[-30deg] rounded-[100%] bg-[#FFCDFF] blur-[80px]' />
+        <div className='absolute bottom-[-30px] h-48 w-[600px] rotate-0 rounded-[100%] bg-[#0013FF] blur-[80px]' />
+        <div className='absolute bottom-[-300px] left-24 h-96 w-96 rotate-90 rounded-[100%] bg-[#00FFFF] blur-3xl' />
         <Image
           src='/pita-rainbow.png'
           alt='rainbow-ribbon'
           height={400}
           width={645}
-          className='absolute blur-sm top-[-100px] left-0'
+          className='absolute left-0 top-[-100px] blur-sm'
         />
 
         {/* Card Body */}
-        <CardBody className='relative flex p-8 w-full h-full overflow-hidden items-center justify-center'>
+        <CardBody className='relative flex h-full w-full items-center justify-center overflow-hidden p-8'>
           {/* Watermark */}
           <div className='flex'>
             <Image src='/logo.svg' alt='wm' width={270} height={270} />

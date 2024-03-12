@@ -18,9 +18,9 @@ const HomeText: FC = () => {
   };
 
   return (
-    <div className='flex flex-col relative items-center justify-center h-full space-y-5'>
+    <div className='relative flex h-full flex-col items-center justify-center space-y-5'>
       <motion.h1
-        className={`text-5xl text-black dark:text-white ${StretchPro.className}`}
+        className={`text-3xl text-black dark:text-white md:text-6xl ${StretchPro.className}`}
         variants={gerak}
         initial='hidden'
         animate='visible'
@@ -33,7 +33,7 @@ const HomeText: FC = () => {
         &quot;Your <span style={{ color: '#07F468' }}>ID</span>, please.&quot;
       </motion.h1>
       <motion.p
-        className='text-medium font-light block whitespace-pre text-center text-black dark:text-white'
+        className='w-[300px] text-center text-xs font-light text-black dark:text-white md:w-[500px] md:text-medium'
         variants={gerak}
         initial='hidden'
         animate='visible'
@@ -44,7 +44,6 @@ const HomeText: FC = () => {
         }}
       >
         Create your very own ID card with your Spotify profile picture, name,
-        <br />
         and your top artists from the past few months.
       </motion.p>
       <motion.div

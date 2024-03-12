@@ -4,11 +4,13 @@
 
 import React, { FC } from 'react';
 import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
   ResponsiveContainer,
 } from 'recharts';
 
@@ -29,76 +31,94 @@ const RadarChartComponent: FC<RadarChartProps> = ({
 }) => {
   const data = [
     {
-      subject: 'Happiness',
-      A: scaledValence,
+      subject: 'H',
+      Score: scaledValence,
       fullMark: 100,
     },
     {
-      subject: 'Danceability',
-      A: scaledDanceability,
+      subject: 'D',
+      Score: scaledDanceability,
       fullMark: 100,
     },
     {
-      subject: 'Energy',
-      A: scaledEnergy,
+      subject: 'E',
+      Score: scaledEnergy,
       fullMark: 100,
     },
     {
-      subject: 'Accousticness',
-      A: scaledAccousticness,
+      subject: 'A',
+      Score: scaledAccousticness,
       fullMark: 100,
     },
     {
-      subject: 'Speechiness',
-      A: scaledSpeechiness,
+      subject: 'S',
+      Score: scaledSpeechiness,
       fullMark: 100,
     },
   ];
   return (
-    <div className='sm:flex-none flex items-center justify-center h-[70%] sm:h-full w-full'>
+    <div className='xs:h-[70%] flex w-full items-center justify-center lg:h-full lg:flex-none'>
       {/* dark mode */}
+
       <ResponsiveContainer
         width='100%'
-        height='100%'
+        height='80%'
         className='hidden dark:block'
       >
-        <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
-          {/* Jaring graf */}
-          <PolarGrid stroke='#FFFFFF' />
-          {/* Outline graf dan tulisan */}
-          <PolarAngleAxis dataKey='subject' stroke='#FFFFFF' radius={0.1} />
-          <PolarRadiusAxis angle={120} />
-          <Radar
-            name='Mike'
-            dataKey='A'
-            // Stroke blob data
-            stroke='#FFFFFF'
-            // Fill blob data
-            fill='#000000'
-            fillOpacity={0.5}
-            fontSize={30}
+        <BarChart
+          width={500}
+          height={300}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+          barSize={20}
+        >
+          <XAxis
+            dataKey='subject'
+            scale='point'
+            padding={{ left: 10, right: 10 }}
           />
-        </RadarChart>
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <CartesianGrid strokeDasharray='3 3' />
+          <Bar dataKey='Score' fill='#000000' background={{ fill: '#fff' }} />
+        </BarChart>
       </ResponsiveContainer>
+
       {/* light mode */}
-      <ResponsiveContainer width='100%' height='100%' className='dark:hidden'>
-        <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
-          {/* Jaring graf */}
-          <PolarGrid stroke='#171717' />
-          {/* Outline graf dan tulisan */}
-          <PolarAngleAxis dataKey='subject' stroke='#FFFF' />
-          <PolarRadiusAxis angle={120} stroke='#000000' />
-          <Radar
-            name='Mike'
-            dataKey='A'
-            // Stroke blob data
-            stroke='#FFFFFF'
-            // Fill blob data
-            fill='#000000'
-            fillOpacity={0.5}
-            fontSize={30}
+      <ResponsiveContainer
+        width='100%'
+        height='80%'
+        className='block dark:hidden'
+      >
+        <BarChart
+          width={500}
+          height={300}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+          barSize={20}
+        >
+          <XAxis
+            dataKey='subject'
+            scale='point'
+            padding={{ left: 10, right: 10 }}
           />
-        </RadarChart>
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <CartesianGrid strokeDasharray='3 3' />
+          <Bar dataKey='Score' fill='#000000' background={{ fill: '#FFF' }} />
+        </BarChart>
       </ResponsiveContainer>
     </div>
   );

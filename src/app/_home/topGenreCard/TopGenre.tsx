@@ -11,7 +11,7 @@ const TopGenre: FC = () => {
   const { top10Genres, isLoading } = TopGenreViewModel();
 
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 h-[800px] sm:h-96 font-bold'>
+    <div className='grid h-[800px] grid-cols-1 gap-4 font-bold sm:h-96 sm:grid-cols-2'>
       {isLoading ? (
         <>
           <GenreSkeleton />
@@ -29,9 +29,11 @@ const TopGenre: FC = () => {
         top10Genres.map((genre, index) => (
           <Card
             key={index}
-            className='flex items-center sm:w-[530px] w-[450px]'
+            className='flex w-[50vw] items-center md:w-[300px] lg:w-[450px]'
           >
-            <p className='align-middle m-auto text-xl'>{genre}</p>
+            <p className='m-auto align-middle text-lg md:text-xl lg:text-2xl'>
+              {genre}
+            </p>
           </Card>
         ))
       )}
