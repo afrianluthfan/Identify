@@ -14,16 +14,9 @@ const TopGenre: FC = () => {
     <div className='grid h-[800px] w-full grid-cols-1 gap-4 font-bold sm:h-96 sm:grid-cols-2 md:w-full'>
       {isLoading ? (
         <>
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
+          {Array.from({ length: 10 }).map((_, index) => (
+            <GenreSkeleton key={index} />
+          ))}
         </>
       ) : (
         top10Genres.map((genre, index) => (
