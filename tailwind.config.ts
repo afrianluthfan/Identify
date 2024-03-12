@@ -24,6 +24,10 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        xs: '319px',
+        ph: '375px',
+      },
       keyframes: {
         'accordion-down': {
           from: { height: 0 },
@@ -68,5 +72,6 @@ module.exports = {
         },
       );
     },
+    'prettier-plugin-tailwindcss',
   ],
 };

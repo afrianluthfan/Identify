@@ -35,9 +35,9 @@ const RecommendationsCard: FC = () => {
   }
 
   return (
-    <div>
-      <div className='flex flex-col sm:flex-row sm:justify-between mb-5'>
-        <h1 className='mb-4 font-bold text-xl sm:text-3xl'>
+    <div className='h-fit w-full px-8'>
+      <div className='mb-5 flex flex-col justify-between sm:justify-between md:flex-row'>
+        <h1 className='mb-4 text-lg font-bold md:text-xl lg:text-3xl'>
           You might also enjoy these tracks
         </h1>
 
@@ -68,24 +68,24 @@ const RecommendationsCard: FC = () => {
             <Card
               isFooterBlurred
               radius='lg'
-              className='border-none w-[450px] sm:w-[1200px] h-[200px]'
+              className='h-fit w-full border-none'
               key={track.id}
             >
-              <CardBody>
-                <div className='flex overflow-hidden gap-3'>
+              <CardBody className='h-fit'>
+                <div className='flex h-fit flex-col items-center justify-center gap-3 overflow-hidden md:flex-row'>
                   {/* @ts-ignore */}
                   <Image
                     alt={track.name}
-                    className='object-cover rounded-lg'
+                    className='rounded-lg object-cover'
                     height={176}
                     src={track?.album?.images[0]?.url ?? ''}
                     width={176}
                   />
-                  <div className='before:bg-white/10 border-white/20 border-2 overflow-hidden before:rounded-xl rounded-large w-[300px] sm:w-[1000px] p-4'>
-                    <p className='text-xl sm:text-3xl text-black/80 dark:text-white/80 font-bold'>
+                  <div className='h-full w-full overflow-hidden rounded-large border-2 border-white/20 p-4 before:rounded-xl before:bg-white/10'>
+                    <p className='text-lg font-bold text-black/80 dark:text-white/80 sm:text-3xl'>
                       {track.name}
                     </p>
-                    <p className='sm:text-2xl text-black/80 dark:text-white/80'>
+                    <p className='text-black/80 dark:text-white/80 sm:text-2xl'>
                       {track.artists.map((artist: any, index: number) => (
                         <span key={artist.id}>
                           {artist.name}

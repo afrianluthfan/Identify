@@ -21,7 +21,7 @@ const TracksCard: FC = () => {
   );
 
   return (
-    <div className='grid grid-cols-2 sm:grid-cols-5 gap-4'>
+    <div className='grid grid-cols-2 gap-4 sm:grid-cols-5'>
       {isLoading ? (
         <>
           {Array.from({ length: 10 }).map((_, index) => (
@@ -33,7 +33,7 @@ const TracksCard: FC = () => {
           <Card
             isFooterBlurred
             radius='lg'
-            className='border-none sm:w-[200px] w-[210px]'
+            className='xs:w-[120px] ph:w-[150px] border-none md:w-[120px] lg:w-[180px] min-[1150px]:w-[210px]'
             key={track.id}
           >
             <Image
@@ -43,9 +43,9 @@ const TracksCard: FC = () => {
               src={track?.album?.images[1]?.url ?? ''}
               width={300}
             />
-            <CardFooter className='before:bg-white/10 border-white/20 border-1 overflow-hidden sm:py-2 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] h-[70px] shadow-small ml-1 z-10 bg-slate-700 bg-opacity-70'>
+            <CardFooter className='absolute bottom-1 z-10 ml-1 h-[70px] w-[calc(100%_-_8px)] overflow-hidden rounded-large border-1 border-white/20 bg-slate-700 bg-opacity-70 shadow-small before:rounded-xl before:bg-white/10 sm:py-2'>
               <div className='space-y-1 p-1'>
-                <p className='text-tiny text-white/80 font-bold'>
+                <p className='text-tiny font-bold text-white/80'>
                   {track.name}
                 </p>
                 <p className='text-tiny text-white/80'>
