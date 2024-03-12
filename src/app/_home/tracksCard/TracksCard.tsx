@@ -21,7 +21,7 @@ const TracksCard: FC = () => {
   );
 
   return (
-    <div className='grid grid-cols-2 gap-4 sm:grid-cols-5'>
+    <div className='grid w-full grid-cols-2 gap-4 sm:grid-cols-5'>
       {isLoading ? (
         <>
           {Array.from({ length: 10 }).map((_, index) => (
@@ -33,7 +33,7 @@ const TracksCard: FC = () => {
           <Card
             isFooterBlurred
             radius='lg'
-            className='xs:w-[120px] ph:w-[150px] border-none md:w-[120px] lg:w-[180px] min-[1150px]:w-[210px]'
+            className='border-none xs:w-[120px] ph:w-[150px] md:w-[120px] lg:w-[180px] min-[1150px]:w-[210px]'
             key={track.id}
           >
             <Image

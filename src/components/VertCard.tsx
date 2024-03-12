@@ -37,9 +37,9 @@ const VertCard: FC = () => {
       }}
       ref={ref}
     >
-      <Card>
-        <CardBody className='flex items-center justify-center p-5 text-center sm:p-0'>
-          <p className='text-xl font-bold sm:text-5xl'>
+      <Card className='md:h-[50%]'>
+        <CardBody className='flex h-full items-center justify-center p-5 text-center sm:p-0'>
+          <p className='text-xl font-bold lg:text-3xl'>
             Generate your very own{' '}
             <span className='text-[#07F468]'>playlists</span> based on <br />
             <span className='text-[#07F468]'>Spotify&apos;s</span> algorithm.

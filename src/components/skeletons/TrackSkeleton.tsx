@@ -2,7 +2,7 @@ import { Card, Skeleton } from '@nextui-org/react';
 import React, { FC } from 'react';
 
 const TrackSkeleton: FC = () => (
-  <Card className='w-[200px] space-y-5 p-4' radius='lg'>
+  <Card className='w-full space-y-5 p-4' radius='lg'>
     <Skeleton className='rounded-lg'>
       <div className='h-24 rounded-lg bg-default-300' />
     </Skeleton>

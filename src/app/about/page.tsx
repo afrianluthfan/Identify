@@ -7,23 +7,27 @@ import { buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
 
 const About: FC = () => (
-  <section className='h-full dark:bg-black bg-white dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex items-center p-20'>
-    <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_70%,black)]' />
-    <div>
-      <div className='flex items-center gap-5'>
+  <section className='relative mb-32 flex h-full w-screen items-center bg-white p-5 bg-dot-black/[0.2] dark:bg-black dark:bg-dot-white/[0.2] md:mb-8 lg:p-20'>
+    <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_70%,black)] dark:bg-black' />
+    <div className='w-full'>
+      <div className='flex w-full items-center gap-5'>
         <div className='flex gap-3'>
           <Image src='./fav.svg' width={70} height={70} alt='logo' />
-          <p className='font-bold text-[40px]'>/</p>
+          <p className='text-[40px] font-bold'>/</p>
         </div>
-        <p className={`${StretchPro.className} text-[40px]`}>about</p>
+        <p
+          className={`${StretchPro.className} text-medium ph:text-2xl md:text-[40px]`}
+        >
+          about
+        </p>
       </div>
-      <Separator className='w-[400px] sm:w-[1375px] my-5' />
+      <Separator className='my-5 w-full' />
       <h1 className={`${lexn.className}`}>The Creators</h1>
-      <div className='flex flex-col sm:flex-row sm:justify-between my-5'>
-        <div className='space-y-3'>
-          <div className='w-[400px] flex gap-5'>
+      <div className='my-5 flex flex-col lg:flex-row lg:justify-between'>
+        <div className='min-w-[30%] space-y-3 md:mb-8'>
+          <div className='flex w-full gap-5'>
             <div
-              className='h-[90px] w-[90px]'
+              className='h-[90px] min-w-[90px]'
               style={{
                 position: 'relative',
               }}
@@ -38,9 +42,9 @@ const About: FC = () => (
                 }}
               />
             </div>
-            <div className='my-3'>
+            <div className='my-3 w-full'>
               <p className='text-tiny font-semibold'>Muhammad Alieza Nuriman</p>
-              <div className='flex my-3 gap-2'>
+              <div className='my-3 flex w-full gap-2'>
                 <Link
                   className={buttonVariants({ variant: 'outline' })}
                   href='https://github.com/aliezan'
@@ -107,9 +111,9 @@ const About: FC = () => (
               </div>
             </div>
           </div>
-          <div className='w-[400px] flex gap-5'>
+          <div className='flex w-full gap-5'>
             <div
-              className='h-[90px] w-[90px]'
+              className='h-[90px] min-w-[90px]'
               style={{
                 position: 'relative',
               }}
@@ -126,7 +130,7 @@ const About: FC = () => (
             </div>
             <div className='my-3'>
               <p className='text-tiny font-semibold'>Afrian Luthfan</p>
-              <div className='flex my-3 gap-2'>
+              <div className='my-3 flex gap-2'>
                 <Link
                   className={buttonVariants({ variant: 'outline' })}
                   href='https://github.com/afrianluthfan'
@@ -194,7 +198,7 @@ const About: FC = () => (
             </div>
           </div>
         </div>
-        <ScrollShadow className='w-[400px] sm:w-[800px] h-[500px] space-y-10 mt-10 sm:mt-0'>
+        <ScrollShadow className='mt-10 h-[500px] w-full space-y-10 sm:mt-0'>
           <div>
             <h1 className={`${lexn.className} text-large font-bold`}>
               What is Identify?

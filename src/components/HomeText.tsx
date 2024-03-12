@@ -20,7 +20,7 @@ const HomeText: FC = () => {
   return (
     <div className='relative flex h-full flex-col items-center justify-center space-y-5'>
       <motion.h1
-        className={`text-3xl text-black dark:text-white md:text-6xl ${StretchPro.className}`}
+        className={`text-xl text-black dark:text-white ph:text-3xl md:text-6xl ${StretchPro.className}`}
         variants={gerak}
         initial='hidden'
         animate='visible'

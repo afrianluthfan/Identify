@@ -8,9 +8,9 @@ import HorCard from '../../components/HorCard';
 const Desc: FC = () => (
   <section
     id='desc'
-    className='mb-12 flex h-auto w-full justify-center align-middle sm:mb-0 sm:h-[1080px] sm:items-center'
+    className='mb-32 flex h-auto w-full justify-center align-middle sm:mb-0 sm:items-center'
   >
-    <div className='flex h-auto w-full flex-col gap-3 sm:grid sm:h-[1080px] sm:grid-cols-4 sm:grid-rows-2'>
+    <div className='flex h-auto w-full flex-col gap-3 sm:grid sm:grid-cols-4 sm:grid-rows-2 md:mb-16'>
       <div className='flex items-center justify-center border-x-0 border-b-0 border-black px-8 text-black dark:border-white dark:text-white sm:col-span-2 sm:border sm:border-none '>
         <DescCard />
       </div>
@@ -20,7 +20,7 @@ const Desc: FC = () => (
       <div className='flex items-center justify-center border-black px-8 text-black dark:border-white dark:text-white sm:row-span-2 sm:border-l-0 sm:border-none'>
         <VertCard />
       </div>
-      <div className='relative flex hidden border-black px-8 text-black dark:border-white dark:text-white sm:block sm:border-l-0 sm:border-r-0 sm:border-t-0 sm:border-none'>
+      <div className='relative hidden border-black px-8 text-black dark:border-white dark:text-white sm:block sm:border-l-0 sm:border-r-0 sm:border-t-0 sm:border-none md:flex'>
         <div className='absolute right-[-10px] top-16'>
           <PixelArt />
         </div>
