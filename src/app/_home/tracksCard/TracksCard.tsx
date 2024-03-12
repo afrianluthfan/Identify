@@ -9,6 +9,8 @@ import { Card, CardFooter } from '@nextui-org/react';
 import useGetTopTracks from '@/server/topTracks/queries';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
+import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 import TrackSkeleton from '../../../components/skeletons/TrackSkeleton';
 
 const TracksCard: FC = () => {
@@ -45,9 +47,11 @@ const TracksCard: FC = () => {
             />
             <CardFooter className='absolute bottom-1 z-10 ml-1 h-[70px] w-[calc(100%_-_8px)] overflow-hidden rounded-large border-1 border-white/20 bg-slate-700 bg-opacity-70 shadow-small before:rounded-xl before:bg-white/10 sm:py-2'>
               <div className='space-y-1 p-1'>
-                <p className='text-tiny font-bold text-white/80'>
-                  {track.name}
-                </p>
+                <Link href={track.external_urls.spotify}>
+                  <p className='text-tiny font-bold text-white/80 hover:underline'>
+                    {track.name}
+                  </p>
+                </Link>
                 <p className='text-tiny text-white/80'>
                   {track.artists.map((artist: any, index: number) => (
                     <span key={artist.id}>
@@ -56,6 +60,7 @@ const TracksCard: FC = () => {
                     </span>
                   ))}
                 </p>
+                <ArrowUpRight size={16} className='absolute right-1 top-1' />
               </div>
             </CardFooter>
           </Card>

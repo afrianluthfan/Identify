@@ -9,6 +9,8 @@ import { Button, Card, CardBody } from '@nextui-org/react';
 import Image from 'next/image';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import RecommendationSkeleton from '@/components/skeletons/RecommendationSkeleton';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 import RecommendationCardViewModel from './RecommendationCard.viewModel';
 
 const RecommendationsCard: FC = () => {
@@ -81,10 +83,12 @@ const RecommendationsCard: FC = () => {
                     src={track?.album?.images[0]?.url ?? ''}
                     width={176}
                   />
-                  <div className='h-full w-full overflow-hidden rounded-large border-2 border-white/20 p-4 before:rounded-xl before:bg-white/10'>
-                    <p className='text-lg font-bold text-black/80 dark:text-white/80 sm:text-3xl'>
-                      {track.name}
-                    </p>
+                  <div className='relative h-full w-full overflow-hidden rounded-large border-2 border-white/20 p-4 before:rounded-xl before:bg-white/10'>
+                    <Link href={track.external_urls.spotify}>
+                      <p className='text-lg font-bold text-black/80 hover:underline dark:text-white/80 sm:text-3xl'>
+                        {track.name}
+                      </p>
+                    </Link>
                     <p className='text-black/80 dark:text-white/80 sm:text-2xl'>
                       {track.artists.map((artist: any, index: number) => (
                         <span key={artist.id}>
@@ -93,6 +97,10 @@ const RecommendationsCard: FC = () => {
                         </span>
                       ))}
                     </p>
+                    <ArrowUpRight
+                      size={30}
+                      className='absolute right-1 top-1'
+                    />
                   </div>
                 </div>
               </CardBody>
