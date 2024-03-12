@@ -1,0 +1,33 @@
+name: 'Identify CI'
+
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['master']
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    environment: 'Production'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+      - name: Build
+        run: pnpm run build
+      - name: Stop existing app
+        run: pm2 delete identify || true
+      - name: Create .env file
+        run: touch .env
+      - name: Populate .env file
+        run: |
+          echo SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }} >> .env
+          echo SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }} >> .env
+          echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env
+          echo SPOTIFY_API_SCOPES=${{ secrets.SPOTIFY_API_SCOPES }} >> .env
+          echo SPOTIFY_REFRESH_TOKEN_URL=${{ secrets.SPOTIFY_REFRESH_TOKEN_URL }} >> .env
+          echo NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} >> .env
+      - name: Start app
+        run: pm2 start npm --name "identify" -- start
