@@ -4,7 +4,7 @@ import Desc from '@/app/landing/Desc';
 // import About from '@/components/sections/About';
 
 const Landing: FC = () => (
-  <main>
+  <main className='overflow-x-hidden'>
     <Hero />
     <Desc />
     {/* <About /> */}

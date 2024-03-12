@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import RecommendationsCard from './recommendationsCard/RecommendationsCard';
 
 const RecommendationsSection: FC = () => (
-  <section className='h-[1300px] flex justify-center mt-[100px]'>
+  <section className='mb-[600px] mt-10 flex h-fit justify-center px-5 md:mb-10'>
     <RecommendationsCard />
   </section>
 );
