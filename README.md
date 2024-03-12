@@ -1,4 +1,4 @@
-# IdentiFy - Your Spotify Music Identifier
+# Identify - Your Spotify Music Identifier
 
 ## THIS PROJECT NOT YET REVIEWED TO GET EXTENSION REQUESTS BY SPOTIFY,
 
@@ -44,7 +44,7 @@ https://github.com/Aliezan/identiFy.git
 Go to the project directory
 
 ```bash
-cd identiFy
+cd identify
 ```
 
 Install the project's dependencies
