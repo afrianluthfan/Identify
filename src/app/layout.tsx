@@ -17,6 +17,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Identify',
   description: 'Identify your musical affinities',
+  metadataBase: new URL('https://identi-fy.live'),
 };
 
 interface RootLayoutProps {
