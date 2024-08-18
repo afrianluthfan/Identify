@@ -5,7 +5,7 @@
 'use client';
 
 import React, { FC, useRef } from 'react';
-import { Button, Card, CardBody } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import RecommendationSkeleton from '@/components/skeletons/RecommendationSkeleton';
@@ -67,44 +67,58 @@ const RecommendationsCard: FC = () => {
           </>
         ) : (
           Recommendations?.tracks?.map((track: any) => (
-            <Card
-              isFooterBlurred
-              radius='lg'
-              className='h-fit w-full border-none'
-              key={track.id}
-            >
-              <CardBody className='h-fit'>
-                <div className='flex h-fit flex-col items-center justify-center gap-3 overflow-hidden md:flex-row'>
-                  {/* @ts-ignore */}
-                  <Image
-                    alt={track.name}
-                    className='rounded-lg object-cover'
-                    height={176}
-                    src={track?.album?.images[0]?.url ?? ''}
-                    width={176}
-                  />
-                  <div className='relative h-full w-full overflow-hidden rounded-large border-2 border-white/20 p-4 before:rounded-xl before:bg-white/10'>
-                    <Link href={track.external_urls.spotify}>
-                      <p className='text-lg font-bold text-black/80 hover:underline dark:text-white/80 sm:text-3xl'>
+            <div className='h-fit w-full border-none' key={track.id}>
+              <div className='h-fit'>
+                <Link
+                  href={track.external_urls.spotify}
+                  className='hover:underline'
+                >
+                  <div className='flex h-fit flex-col items-center justify-center gap-3 overflow-hidden md:flex-row'>
+                    {/* @ts-ignore */}
+                    <Image
+                      alt={track.name}
+                      className='object-cover'
+                      height={176}
+                      src={track?.album?.images[0]?.url ?? ''}
+                      width={176}
+                    />
+                    <div className='relative h-full w-full overflow-hidden rounded-large border-2 border-white/20 p-4 before:rounded-xl before:bg-white/10'>
+                      <div className='mb-2 w-full'>
+                        <Image
+                          alt='spotify logo'
+                          height={25}
+                          width={100}
+                          src='/spotify_logo_black.svg'
+                          className='dark:hidden'
+                        />
+                        <Image
+                          alt='spotify logo'
+                          height={50}
+                          width={120}
+                          src='/spotify_logo_white.svg'
+                          className='hidden dark:block'
+                        />
+                      </div>
+                      <p className='text-lg font-bold text-black/80 dark:text-white/80 sm:text-3xl'>
                         {track.name}
                       </p>
-                    </Link>
-                    <p className='text-black/80 dark:text-white/80 sm:text-2xl'>
-                      {track.artists.map((artist: any, index: number) => (
-                        <span key={artist.id}>
-                          {artist.name}
-                          {index < track.artists.length - 1 && ', '}
-                        </span>
-                      ))}
-                    </p>
-                    <ArrowUpRight
-                      size={30}
-                      className='absolute right-1 top-1'
-                    />
+                      <p className='text-black/80 dark:text-white/80 sm:text-2xl'>
+                        {track.artists.map((artist: any, index: number) => (
+                          <span key={artist.id}>
+                            {artist.name}
+                            {index < track.artists.length - 1 && ', '}
+                          </span>
+                        ))}
+                      </p>
+                      <ArrowUpRight
+                        size={30}
+                        className='absolute right-1 top-1'
+                      />
+                    </div>
                   </div>
-                </div>
-              </CardBody>
-            </Card>
+                </Link>
+              </div>
+            </div>
           ))
         )}
       </motion.div>

@@ -6,12 +6,11 @@ import React, { FC } from 'react';
 import { Avatar, Button, Card, CardBody, CardHeader } from '@nextui-org/react';
 import Image from 'next/image';
 import RunningText from '@/components/RunningText';
-import RadarChartComponent from './RadarChart';
+// import RadarChartComponent from './RadarChart';
 import UserCardViewModel from './UserCard.viewModel';
 
 const UserCard: FC = () => {
-  const { session, waktu, arrayText, convert, ref, scaledFeatures, target } =
-    UserCardViewModel();
+  const { session, waktu, arrayText, convert, ref } = UserCardViewModel();
 
   return (
     <>
@@ -51,7 +50,8 @@ const UserCard: FC = () => {
                 <Card className='p-5 xs:mb-8 xs:min-w-[232px] ph:min-w-[319px] ph:p-10 md:mb-0 md:min-w-[400px]'>
                   <CardHeader className='font-bold ph:text-lg lg:text-xl '>
                     <p>
-                      {session?.user?.name} seems to enjoy music that are
+                      Spotify Profile Analysis:
+                      {/* {session?.user?.name} seems to enjoy music that are
                       {target === 1 ? (
                         <span>&nbsp;happy</span>
                       ) : target === 2 ? (
@@ -65,11 +65,48 @@ const UserCard: FC = () => {
                       ) : (
                         <span>....</span>
                       )}
-                      .
+                      . */}
                     </p>
                   </CardHeader>
                   <CardBody className='text-[12px] ph:text-small'>
-                    <p>
+                    <ul className='flex flex-col gap-5'>
+                      <li>
+                        <h1 className='font-bold'>Danceability: 69%</h1>
+                        <p className='text-tiny'>
+                          You&apos;re clearly trying to compensate for something
+                          with those frantic dance moves.
+                        </p>
+                      </li>
+                      <li>
+                        <h1 className='font-bold'>Energetic: 75%</h1>
+                        <p className='text-tiny'>
+                          You&rsquo;re the human equivalent of a caffeinated
+                          squirrel on crack.
+                        </p>
+                      </li>
+                      <li>
+                        <h1 className='font-bold'>Acousticness: 20%</h1>
+                        <p className='text-tiny'>
+                          Nature is calling, but you&apos;re too busy blasting
+                          electronic beats to answer.
+                        </p>
+                      </li>
+                      <li>
+                        <h1 className='font-bold'>Speechiness: 7%</h1>
+                        <p className='text-tiny'>
+                          You probably talk more during your music than the
+                          actual vocals do.
+                        </p>
+                      </li>
+                      <li>
+                        <h1 className='font-bold'>Happiness: 53% </h1>
+                        <p className='text-tiny'>
+                          Half-hearted optimism? That&apos;s a mood disorder,
+                          not a music genre.
+                        </p>
+                      </li>
+                    </ul>
+                    {/* <p>
                       Well, from what we can see, your music sound pretty
                       {target === 1 ? (
                         <span>&nbsp;joyous.</span>
@@ -100,8 +137,8 @@ const UserCard: FC = () => {
                         <span>....</span>
                       )}
                       &nbsp;itself.
-                    </p>
-                    <p>
+                    </p> */}
+                    {/* <p>
                       Quite the
                       {target === 1 ? (
                         <span>&nbsp;rapture</span>
@@ -117,13 +154,24 @@ const UserCard: FC = () => {
                         <span>....</span>
                       )}
                       , I see.
-                    </p>
+                    </p> */}
                   </CardBody>
                 </Card>
               </div>
-              <div className='relative flex h-[400px] w-full justify-center md:justify-end lg:px-12'>
-                <div className='z-0 flex h-[400px] min-w-full items-center justify-center rounded-3xl bg-white bg-opacity-[10%] backdrop-blur-lg ph:min-w-[319px] lg:max-w-[400px] lg:rounded-l-3xl'>
-                  <RadarChartComponent
+              <div className='relative flex w-full justify-center md:justify-end lg:px-12'>
+                <Card className='p-5 xs:mb-8 xs:min-w-[232px] ph:min-w-[319px] ph:p-10 md:mb-0 md:min-w-[400px]'>
+                  <CardHeader className='font-bold ph:text-lg lg:text-xl '>
+                    <p>Well,</p>
+                  </CardHeader>
+                  <CardBody className='text-xl ph:text-small'>
+                    Your Spotify profile screams &quot;attention-seeking,
+                    hyperactive, and emotionally stunted.&quot; You&nbsp;re the
+                    human equivalent of a jackhammer with a terrible taste in
+                    music. Maybe try listening to something that requires more
+                    than two brain cells to appreciate?
+                  </CardBody>
+                </Card>
+                {/* <RadarChartComponent
                     scaledAccousticness={Math.round(
                       scaledFeatures.accousticness,
                     )}
@@ -131,8 +179,7 @@ const UserCard: FC = () => {
                     scaledEnergy={Math.round(scaledFeatures.energy)}
                     scaledSpeechiness={Math.round(scaledFeatures.speechiness)}
                     scaledValence={Math.round(scaledFeatures.valence)}
-                  />
-                </div>
+                  /> */}
               </div>
             </div>
             <div className='sticky bottom-0 flex w-full justify-between xs:mb-2 md:mt-8'>
