@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
-import { StretchPro } from '@/Font';
+import { cExtended } from '@/utils/Font';
 import SignInButton from './SignInButton';
 
 const HomeText: FC = () => {
@@ -20,7 +20,7 @@ const HomeText: FC = () => {
   return (
     <div className='relative flex h-full flex-col items-center justify-center space-y-5'>
       <motion.h1
-        className={`text-xl text-black dark:text-white ph:text-3xl md:text-6xl ${StretchPro.className}`}
+        className={`text-xl text-black dark:text-white ph:text-3xl md:text-6xl ${cExtended.className}`}
         variants={gerak}
         initial='hidden'
         animate='visible'

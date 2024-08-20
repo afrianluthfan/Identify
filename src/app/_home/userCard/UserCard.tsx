@@ -6,12 +6,21 @@ import React, { FC } from 'react';
 import { Avatar, Button, Card, CardBody, CardHeader } from '@nextui-org/react';
 import Image from 'next/image';
 import RunningText from '@/components/RunningText';
+import { experimental_useObject as useObject } from 'ai/react';
+import { roastsSchema } from '@/app/api/roasts/schema';
 import RadarChartComponent from './RadarChart';
 import UserCardViewModel from './UserCard.viewModel';
 
 const UserCard: FC = () => {
-  const { session, waktu, arrayText, convert, ref, scaledFeatures, target } =
+  const { session, waktu, arrayText, ref, scaledFeatures } =
     UserCardViewModel();
+
+  const { object, submit } = useObject({
+    api: '/api/roasts',
+    schema: roastsSchema,
+  });
+
+  console.log(object);
 
   return (
     <>
@@ -49,88 +58,17 @@ const UserCard: FC = () => {
             <div className='flex flex-col items-center md:flex-row lg:justify-center'>
               <div className='-order-first flex h-[35%] items-center justify-center p-8 ph:mt-0 ph:h-full ph:p-12 md:order-first md:min-h-[400px] md:max-w-[50%] md:py-0'>
                 <Card className='p-5 xs:mb-8 xs:min-w-[232px] ph:min-w-[319px] ph:p-10 md:mb-0 md:min-w-[400px]'>
-                  <CardHeader className='font-bold ph:text-lg lg:text-xl '>
-                    <p>
-                      {session?.user?.name} seems to enjoy music that are
-                      {target === 1 ? (
-                        <span>&nbsp;happy</span>
-                      ) : target === 2 ? (
-                        <span>&nbsp;danceable</span>
-                      ) : target === 3 ? (
-                        <span>&nbsp;energetic</span>
-                      ) : target === 4 ? (
-                        <span>&nbsp;accoustic</span>
-                      ) : target === 5 ? (
-                        <span>&nbsp;speechy</span>
-                      ) : (
-                        <span>....</span>
-                      )}
-                      .
-                    </p>
-                  </CardHeader>
-                  <CardBody className='text-[12px] ph:text-small'>
-                    <p>
-                      Well, from what we can see, your music sound pretty
-                      {target === 1 ? (
-                        <span>&nbsp;joyous.</span>
-                      ) : target === 2 ? (
-                        <span>&nbsp;groovy.</span>
-                      ) : target === 3 ? (
-                        <span>&nbsp;full of energy.</span>
-                      ) : target === 4 ? (
-                        <span>&nbsp;organic.</span>
-                      ) : target === 5 ? (
-                        <span>&nbsp;full of vocals</span>
-                      ) : (
-                        <span>....</span>
-                      )}
-                      &nbsp;Not to sound judgemental, but you really seem like
-                      the embodiment of
-                      {target === 1 ? (
-                        <span>&nbsp;happiness</span>
-                      ) : target === 2 ? (
-                        <span>&nbsp;dance</span>
-                      ) : target === 3 ? (
-                        <span>&nbsp;hype</span>
-                      ) : target === 4 ? (
-                        <span>&nbsp;life</span>
-                      ) : target === 5 ? (
-                        <span>&nbsp;vocal</span>
-                      ) : (
-                        <span>....</span>
-                      )}
-                      &nbsp;itself.
-                    </p>
-                    <p>
-                      Quite the
-                      {target === 1 ? (
-                        <span>&nbsp;rapture</span>
-                      ) : target === 2 ? (
-                        <span>&nbsp;moving sounds</span>
-                      ) : target === 3 ? (
-                        <span>&nbsp;hypeman you are</span>
-                      ) : target === 4 ? (
-                        <span>&nbsp;lively persona</span>
-                      ) : target === 5 ? (
-                        <span>&nbsp;vocal person you are</span>
-                      ) : (
-                        <span>....</span>
-                      )}
-                      , I see.
-                    </p>
-                  </CardBody>
+                  test
                 </Card>
               </div>
               <div className='relative flex h-[400px] w-full justify-center md:justify-end lg:px-12'>
                 <div className='z-0 flex h-[400px] min-w-full items-center justify-center rounded-3xl bg-white bg-opacity-[10%] backdrop-blur-lg ph:min-w-[319px] lg:max-w-[400px] lg:rounded-l-3xl'>
                   <RadarChartComponent
-                    scaledAccousticness={Math.round(
-                      scaledFeatures.accousticness,
-                    )}
-                    scaledDanceability={Math.round(scaledFeatures.danceability)}
-                    scaledEnergy={Math.round(scaledFeatures.energy)}
-                    scaledSpeechiness={Math.round(scaledFeatures.speechiness)}
-                    scaledValence={Math.round(scaledFeatures.valence)}
+                    scaledAcousticness={scaledFeatures.acousticness!}
+                    scaledDanceability={scaledFeatures.danceability!}
+                    scaledEnergy={scaledFeatures.energy!}
+                    scaledSpeechiness={scaledFeatures.speechiness!}
+                    scaledValence={scaledFeatures.valence!}
                   />
                 </div>
               </div>
@@ -155,7 +93,7 @@ const UserCard: FC = () => {
         </Card>
         <Button
           radius='sm'
-          onClick={convert}
+          onClick={() => submit(scaledFeatures)}
           type='button'
           className='mt-5 h-12 w-fit text-xl font-bold xs:px-12 ph:px-4 lg:w-[20%]'
         >

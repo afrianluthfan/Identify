@@ -6,7 +6,7 @@ const baseURL = 'https://api.spotify.com/v1/me';
 
 type Term = 'short_term' | 'medium_term' | 'long_term';
 
-const fetchTopTracks = async (token: string, term: Term, limit: string) => {
+export const fetchTopTracks = async (token: string, term: Term, limit: string) => {
   const { data } = await axios.get(
     `${baseURL}/top/tracks?time_range=${term}&limit=${limit}`,
     {

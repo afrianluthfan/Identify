@@ -15,17 +15,17 @@ import {
 } from 'recharts';
 
 interface RadarChartProps {
-  scaledValence: number;
-  scaledDanceability: number;
-  scaledAccousticness: number;
-  scaledEnergy: number;
-  scaledSpeechiness: number;
+  scaledValence: string;
+  scaledDanceability: string;
+  scaledAcousticness: string;
+  scaledEnergy: string;
+  scaledSpeechiness: string;
 }
 
 const RadarChartComponent: FC<RadarChartProps> = ({
   scaledValence,
   scaledDanceability,
-  scaledAccousticness,
+  scaledAcousticness,
   scaledEnergy,
   scaledSpeechiness,
 }) => {
@@ -47,7 +47,7 @@ const RadarChartComponent: FC<RadarChartProps> = ({
     },
     {
       subject: 'A',
-      Score: scaledAccousticness,
+      Score: scaledAcousticness,
       fullMark: 100,
     },
     {
@@ -57,7 +57,7 @@ const RadarChartComponent: FC<RadarChartProps> = ({
     },
   ];
   return (
-    <div className='xs:h-[70%] flex w-full items-center justify-center lg:h-full lg:flex-none'>
+    <div className='flex w-full items-center justify-center xs:h-[70%] lg:h-full lg:flex-none'>
       {/* dark mode */}
 
       <ResponsiveContainer

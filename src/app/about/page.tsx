@@ -1,6 +1,8 @@
+'use client';
+
 import React, { FC } from 'react';
 import Image from 'next/image';
-import { StretchPro, lexn } from '@/Font';
+import { cExtended, lexn } from '@/utils/Font';
 import { Separator } from '@/components/ui/separator';
 import { ScrollShadow } from '@nextui-org/react';
 import { buttonVariants } from '@/components/ui/button';
@@ -16,7 +18,7 @@ const About: FC = () => (
           <p className='text-[40px] font-bold'>/</p>
         </div>
         <p
-          className={`${StretchPro.className} text-medium ph:text-2xl md:text-[40px]`}
+          className={`${cExtended.className} text-medium ph:text-2xl md:text-[60px]`}
         >
           about
         </p>

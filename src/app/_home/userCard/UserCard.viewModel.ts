@@ -1,4 +1,3 @@
-/* eslint-disable no-confusing-arrow */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
@@ -7,6 +6,7 @@ import { useToPng } from '@hugocxl/react-to-image';
 import { toast } from 'sonner';
 import useGetTopTracks from '@/server/topTracks/queries';
 import useAudioFeatures from '@/server/audioFeatures/queries';
+import calculateAverage, { AudioFeature } from '@/utils/calculateAverage';
 
 const UserCardViewModel = () => {
   const { data: session } = useSession();
@@ -46,81 +46,28 @@ const UserCardViewModel = () => {
     trackIds ?? '',
   );
 
-  let avgValence = 0;
-  let avgDanceability = 0;
-  let avgEnergy = 0;
-  let avgAccousticness = 0;
-  let avgSpeechiness = 0;
+  const features: AudioFeature[] = [
+    'valence',
+    'danceability',
+    'energy',
+    'acousticness',
+    'speechiness',
+  ];
 
-  if (AudioFeaturesData) {
-    const totalValence = AudioFeaturesData.reduce(
-      (total, item) => (item && item.valence ? total + item.valence : total),
-      0,
-    );
-    avgValence = totalValence / AudioFeaturesData.length;
+  const averages = features.reduce(
+    (acc, feature) => {
+      acc[feature] = calculateAverage(AudioFeaturesData, feature);
+      return acc;
+    },
+    {} as Record<AudioFeature, number>,
+  );
 
-    const totalDanceability = AudioFeaturesData.reduce(
-      (total, item) =>
-        item && item.danceability ? total + item.danceability : total,
-      0,
-    );
-    avgDanceability = totalDanceability / AudioFeaturesData.length;
-
-    const totalEnergy = AudioFeaturesData.reduce(
-      (total, item) => (item && item.energy ? total + item.energy : total),
-      0,
-    );
-    avgEnergy = totalEnergy / AudioFeaturesData.length;
-
-    const totalAccousticness = AudioFeaturesData.reduce(
-      (total, item) =>
-        item && item.acousticness ? total + item.acousticness : total,
-      0,
-    );
-    avgAccousticness = totalAccousticness / AudioFeaturesData.length;
-
-    const totalSpeechiness = AudioFeaturesData.reduce(
-      (total, item) =>
-        item && item.speechiness ? total + item.speechiness : total,
-      0,
-    );
-    avgSpeechiness = totalSpeechiness / AudioFeaturesData.length;
-  }
-
-  const scaledFeatures = {
-    valence: avgValence * 100,
-    danceability: avgDanceability * 100,
-    energy: avgEnergy * 100,
-    accousticness: avgAccousticness * 100,
-    speechiness: avgSpeechiness * 100,
-  };
-
-  let target = 0;
-  const value = 0;
-  const maxFeat = {
-    key: value,
-  };
-
-  if (scaledFeatures.valence > scaledFeatures.danceability) {
-    maxFeat.key = scaledFeatures.valence;
-    target = 1;
-  } else {
-    maxFeat.key = scaledFeatures.danceability;
-    target = 2;
-  }
-
-  if (scaledFeatures.energy > scaledFeatures.accousticness) {
-    maxFeat.key = scaledFeatures.energy;
-    target = 3;
-  } else {
-    maxFeat.key = scaledFeatures.accousticness;
-    target = 4;
-  }
-
-  if (scaledFeatures.speechiness > maxFeat.key) {
-    maxFeat.key = scaledFeatures.speechiness;
-    target = 5;
-  }
+  const scaledFeatures = Object.fromEntries(
+    Object.entries(averages).map(([key, value]) => [
+      key,
+      Math.round(value * 100).toString(),
+    ]),
+  );
 
   const arrayText = Array(40).fill(`${session?.user?.name}`).join(' ');
 
@@ -131,8 +78,6 @@ const UserCardViewModel = () => {
     convert,
     ref,
     scaledFeatures,
-    maxFeat,
-    target,
   };
 };
 

@@ -26,7 +26,6 @@ interface RootLayoutProps {
 
 const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
   const session = await getServerSession(authOptions);
-
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={inter.className}>

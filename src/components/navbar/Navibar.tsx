@@ -12,7 +12,7 @@ import {
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import ProfileButton from '@/components/navbar/ProfileButton';
-import { lexn } from '@/Font';
+import { cLight } from '@/utils/Font';
 import ThemeButton from '../ThemeButton';
 import Logo from '../Logo';
 
@@ -55,12 +55,12 @@ const Navibar: FC = () => {
               <Logo />
             </NavbarBrand>
           </NavbarContent>
-          <NavbarContent className='hidden sm:flex gap-4' justify='end'>
+          <NavbarContent className='hidden gap-4 sm:flex' justify='end'>
             <NavbarItem>
               <Link
                 color='foreground'
                 href='/'
-                className={`${lexn.className} font-semibold`}
+                className={`${cLight.className} font-semibold`}
               >
                 home
               </Link>
@@ -69,7 +69,7 @@ const Navibar: FC = () => {
               <Link
                 color='foreground'
                 href='/about'
-                className={`${lexn.className} font-semibold`}
+                className={`${cLight.className} font-semibold`}
               >
                 about
               </Link>
