@@ -1,6 +1,5 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-plusplus */
-/* eslint-disable no-confusing-arrow */
 
 'use client';
 
