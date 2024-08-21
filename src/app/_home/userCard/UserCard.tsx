@@ -1,25 +1,14 @@
-/* eslint-disable no-nested-ternary */
-
 'use client';
 
 import React, { FC } from 'react';
 import { Avatar, Button, Card, CardBody, CardHeader } from '@nextui-org/react';
 import Image from 'next/image';
 import RunningText from '@/components/RunningText';
-import { experimental_useObject as useObject } from 'ai/react';
-import { roastsSchema } from '@/app/api/roasts/schema';
 import UserCardViewModel from './UserCard.viewModel';
 
 const UserCard: FC = () => {
-  const { session, waktu, arrayText, ref, scaledFeatures } =
+  const { session, waktu, arrayText, ref, roastStream, generation } =
     UserCardViewModel();
-
-  const { object, submit } = useObject({
-    api: '/api/roasts',
-    schema: roastsSchema,
-  });
-
-  console.log(object);
 
   return (
     <>
@@ -62,41 +51,14 @@ const UserCard: FC = () => {
                   </CardHeader>
                   <CardBody className='text-[12px] ph:text-small'>
                     <ul className='flex flex-col gap-5'>
-                      <li>
-                        <h1 className='font-bold'>Danceability: 69%</h1>
-                        <p className='text-tiny'>
-                          You&apos;re clearly trying to compensate for something
-                          with those frantic dance moves.
-                        </p>
-                      </li>
-                      <li>
-                        <h1 className='font-bold'>Energetic: 75%</h1>
-                        <p className='text-tiny'>
-                          You&rsquo;re the human equivalent of a caffeinated
-                          squirrel on crack.
-                        </p>
-                      </li>
-                      <li>
-                        <h1 className='font-bold'>Acousticness: 20%</h1>
-                        <p className='text-tiny'>
-                          Nature is calling, but you&apos;re too busy blasting
-                          electronic beats to answer.
-                        </p>
-                      </li>
-                      <li>
-                        <h1 className='font-bold'>Speechiness: 7%</h1>
-                        <p className='text-tiny'>
-                          You probably talk more during your music than the
-                          actual vocals do.
-                        </p>
-                      </li>
-                      <li>
-                        <h1 className='font-bold'>Happiness: 53% </h1>
-                        <p className='text-tiny'>
-                          Half-hearted optimism? That&apos;s a mood disorder,
-                          not a music genre.
-                        </p>
-                      </li>
+                      {generation?.roastDetails?.map((item) => (
+                        <li key={item?.nameOfAudioFeature}>
+                          <h1 className='font-bold'>
+                            {item?.nameOfAudioFeature}: {item?.percentage}%
+                          </h1>
+                          <p className='text-tiny'>{item?.percentageRoast}</p>
+                        </li>
+                      ))}
                     </ul>
                   </CardBody>
                 </Card>
@@ -107,11 +69,7 @@ const UserCard: FC = () => {
                     <p>Well,</p>
                   </CardHeader>
                   <CardBody className='text-xl ph:text-small'>
-                    Your Spotify profile screams &quot;attention-seeking,
-                    hyperactive, and emotionally stunted.&quot; You&nbsp;re the
-                    human equivalent of a jackhammer with a terrible taste in
-                    music. Maybe try listening to something that requires more
-                    than two brain cells to appreciate?
+                    {generation?.overallRoast}
                   </CardBody>
                 </Card>
               </div>
@@ -136,7 +94,7 @@ const UserCard: FC = () => {
         </Card>
         <Button
           radius='sm'
-          onClick={() => submit(scaledFeatures)}
+          onClick={roastStream}
           type='button'
           className='mt-5 h-12 w-fit text-xl font-bold xs:px-12 ph:px-4 lg:w-[20%]'
         >

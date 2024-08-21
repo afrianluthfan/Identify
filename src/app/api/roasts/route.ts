@@ -1,6 +1,6 @@
 import { google } from '@ai-sdk/google';
 import { streamObject } from 'ai';
-import { roastsSchema } from './schema';
+import roastsSchema from '../../../actions/schema';
 
 type RequestBody = {
   valence: string;
