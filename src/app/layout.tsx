@@ -37,7 +37,7 @@ const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
                 defaultTheme='system'
                 enableSystem
               >
-                <Toaster position='top-left' />
+                <Toaster position='top-right' richColors />
                 <Navibar />
                 {children}
                 <PageFooter />

@@ -9,11 +9,10 @@ import { toast } from 'sonner';
 import useGetTopTracks from '@/server/topTracks/queries';
 import useAudioFeatures from '@/server/audioFeatures/queries';
 import calculateAverage, { AudioFeature } from '@/utils/calculateAverage';
-import { experimental_useObject as useObject } from 'ai/react';
 import roastsSchema from '@/actions/schema';
 import { useEffect, useState } from 'react';
 import { z } from 'zod';
-import { generateRoastRSC } from '@/actions/actions';
+import { generateRoastRSC, RequestType } from '@/actions/actions';
 import { readStreamableValue } from 'ai/rsc';
 
 const UserCardViewModel = () => {
@@ -73,17 +72,10 @@ const UserCardViewModel = () => {
   const scaledFeatures = Object.fromEntries(
     Object.entries(averages).map(([key, value]) => [
       key,
-      Math.round(value * 100).toString(),
+      Math.round(value * 100),
     ]),
   );
 
-  type ScaledFeaturesType = {
-    valence: string;
-    danceability: string;
-    energy: string;
-    acousticness: string;
-    speechiness: string;
-  };
   type RoastSchemaType = z.infer<typeof roastsSchema>;
   const [generation, setGeneration] = useState<RoastSchemaType | null>(null);
   const CACHE_KEY = 'roastCache';
@@ -99,24 +91,15 @@ const UserCardViewModel = () => {
       }
 
       // Fetch fresh data
-      const { object, error } = await generateRoastRSC(
-        scaledFeatures as ScaledFeaturesType,
-      );
-      if (error) {
-        console.error('Error generating roast:', error);
-        return;
-      }
+      const { object } = await generateRoastRSC(scaledFeatures as RequestType);
 
-      if (object) {
-        let partialObject: RoastSchemaType | null = null;
-        for await (const obj of readStreamableValue(object)) {
-          if (obj) {
-            partialObject = obj;
-          }
+      let partialObject: RoastSchemaType | null = null;
+      for await (const obj of readStreamableValue(object)) {
+        if (obj) {
+          partialObject = obj;
         }
 
         if (partialObject) {
-          // Set the state with the new data
           setGeneration(partialObject);
           // Cache the new data in localStorage
           localStorage.setItem(CACHE_KEY, JSON.stringify(partialObject));
@@ -125,8 +108,10 @@ const UserCardViewModel = () => {
     } catch (err) {
       if (err instanceof Error) {
         console.error('Unexpected error:', err.message);
+        toast.error(`Unexpected error: ${err.message}`);
       } else {
         console.error('An unknown error occurred:', err);
+        toast.error(`An unknown error occurred: ${err}`);
       }
     }
   };
