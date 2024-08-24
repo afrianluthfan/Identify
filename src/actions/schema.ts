@@ -11,6 +11,9 @@ const roastsSchema = z.object({
     )
     .describe('Details of the roast per percentage'),
   overallRoast: z.string().describe('Overall roast based on the percentages'),
+  mainGenre: z
+    .string()
+    .describe("The person's favorite genre based on their audio features"),
 });
 
 export default roastsSchema;
