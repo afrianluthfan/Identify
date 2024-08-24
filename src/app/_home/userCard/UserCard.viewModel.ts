@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { z } from 'zod';
 import { generateRoastRSC, RequestType } from '@/actions/actions';
 import { readStreamableValue } from 'ai/rsc';
+import useGetTopArtists from '@/server/topArtists/queries';
 
 const UserCardViewModel = () => {
   const { data: session } = useSession();
@@ -76,6 +77,33 @@ const UserCardViewModel = () => {
     ]),
   );
 
+  const { data: topArtists, isLoading } = useGetTopArtists(
+    session?.accessToken ?? '',
+    'medium_term',
+    '50',
+  );
+  const topGenres = topArtists?.map((artist) => artist.genres);
+
+  const genreCounts: Record<string, number> = {};
+
+  topGenres?.forEach((genreArray) => {
+    genreArray.forEach((genre) => {
+      if (genre in genreCounts) {
+        genreCounts[genre]! += 1;
+      } else {
+        genreCounts[genre] = 1;
+      }
+    });
+  });
+
+  const genreCountPairs = Object.entries(genreCounts);
+
+  genreCountPairs.sort((a, b) => b[1] - a[1]);
+
+  const sortedGenres = genreCountPairs.map((pair) => pair[0]);
+
+  const topGenre = sortedGenres[0];
+
   type RoastSchemaType = z.infer<typeof roastsSchema>;
   const [generation, setGeneration] = useState<RoastSchemaType | null>(null);
   const CACHE_KEY = 'roastCache';
@@ -135,6 +163,7 @@ const UserCardViewModel = () => {
     roastStream,
     generation,
     scaledFeatures,
+    topGenre,
   };
 };
 
