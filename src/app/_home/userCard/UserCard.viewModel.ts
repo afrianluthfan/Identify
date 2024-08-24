@@ -119,7 +119,10 @@ const UserCardViewModel = () => {
       }
 
       // Fetch fresh data
-      const { object } = await generateRoastRSC(scaledFeatures as RequestType);
+      const { object } = await generateRoastRSC(
+        scaledFeatures as RequestType,
+        topGenre!,
+      );
 
       let partialObject: RoastSchemaType | null = null;
       for await (const obj of readStreamableValue(object)) {
