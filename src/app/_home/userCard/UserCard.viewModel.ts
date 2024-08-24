@@ -11,7 +11,7 @@ import useAudioFeatures from '@/server/audioFeatures/queries';
 import calculateAverage, { AudioFeature } from '@/utils/calculateAverage';
 import roastsSchema from '@/actions/schema';
 import { useEffect, useState } from 'react';
-import { z } from 'zod';
+import { set, z } from 'zod';
 import { generateRoastRSC, RequestType } from '@/actions/actions';
 import { readStreamableValue } from 'ai/rsc';
 import useGetTopArtists from '@/server/topArtists/queries';
@@ -106,10 +106,12 @@ const UserCardViewModel = () => {
 
   type RoastSchemaType = z.infer<typeof roastsSchema>;
   const [generation, setGeneration] = useState<RoastSchemaType | null>(null);
+  const [isLoadingRoast, setIsLoadingRoast] = useState(false);
   const CACHE_KEY = 'roastCache';
 
   const roastStream = async () => {
     try {
+      setIsLoadingRoast(true);
       // Check if there's cached data
       const cachedData = localStorage.getItem(CACHE_KEY);
       if (cachedData) {
@@ -127,6 +129,7 @@ const UserCardViewModel = () => {
       let partialObject: RoastSchemaType | null = null;
       for await (const obj of readStreamableValue(object)) {
         if (obj) {
+          setIsLoadingRoast(false);
           partialObject = obj;
         }
 
@@ -167,6 +170,7 @@ const UserCardViewModel = () => {
     generation,
     scaledFeatures,
     topGenre,
+    isLoadingRoast,
   };
 };
 

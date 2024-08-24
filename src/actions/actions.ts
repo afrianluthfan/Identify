@@ -32,12 +32,11 @@ export const generateRoastRSC = async (
         system:
           'You generate roasts for this Spotify user music taste with details from each percentage and overall roast.',
         schema: roastsSchema,
-        prompt: `Look at them. Roast this person with this kind of music taste from Spotify, measured in percentage:
+        prompt: `Look at them. Roast this person in the style of a british standup comedian with this music taste from Spotify, measured in percentage:
           ${input.danceability} Danceability, ${input.energy} Energy, ${input.acousticness} Acousticness, ${input.speechiness} Speechiness, and ${input.valence} Happiness.
-          their top genre are ${topGenre}.
+          Their top genre is ${topGenre}.
           The overall roast should consist of five sentences.
-          Use emojis on every other sentences and internet slangs to add emphasis to the roast like a based gen-z or a gen alpha with brainrot would.
-          Roast them without mercy, make them lose confidence in themselves.`,
+          Roast them without mercy, don't pull any punches, and make them lose confidence in themselves.`,
       });
 
       for await (const part of fullStream) {
