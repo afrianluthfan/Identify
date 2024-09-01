@@ -24,8 +24,6 @@ const UserCard: FC = () => {
     generation,
     isLoadingRoast,
   } = UserCardViewModel();
-  // eslint-disable-next-line no-console
-  console.log(generation);
 
   return (
     <>

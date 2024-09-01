@@ -26,6 +26,8 @@ const useGetTopArtists = (accessToken: string, term: Term, limit: string) =>
       const [, token, fetchTerm, fetchLimit] = queryKey;
       return fetchTopArtists(token ?? '', fetchTerm as Term, fetchLimit ?? '');
     },
+    staleTime: Infinity,
+    gcTime: 1000 * 60 * 60,
   });
 
 export default useGetTopArtists;

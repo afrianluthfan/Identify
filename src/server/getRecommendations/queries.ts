@@ -104,6 +104,8 @@ const useGetRecommendations = (
         userMarket,
       );
     },
+    staleTime: 1000 * 60 * 5,
+    gcTime: 1000 * 60 * 60,
   });
 
 export default useGetRecommendations;

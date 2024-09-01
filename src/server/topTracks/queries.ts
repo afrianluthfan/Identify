@@ -6,7 +6,11 @@ const baseURL = 'https://api.spotify.com/v1/me';
 
 type Term = 'short_term' | 'medium_term' | 'long_term';
 
-export const fetchTopTracks = async (token: string, term: Term, limit: string) => {
+export const fetchTopTracks = async (
+  token: string,
+  term: Term,
+  limit: string,
+) => {
   const { data } = await axios.get(
     `${baseURL}/top/tracks?time_range=${term}&limit=${limit}`,
     {
@@ -26,6 +30,8 @@ const useGetTopTracks = (accessToken: string, term: Term, limit: string) =>
       const [, token, fetchTerm, fetchLimit] = queryKey;
       return fetchTopTracks(token ?? '', fetchTerm as Term, fetchLimit ?? '');
     },
+    staleTime: Infinity,
+    gcTime: 1000 * 60 * 60,
   });
 
 export default useGetTopTracks;

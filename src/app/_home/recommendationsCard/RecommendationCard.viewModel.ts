@@ -2,9 +2,11 @@ import useGetTopArtists from '@/server/topArtists/queries';
 import useGetRecommendations from '@/server/getRecommendations/queries';
 import useGetTopTracks from '@/server/topTracks/queries';
 import { useSession } from 'next-auth/react';
+import { useQueryClient } from '@tanstack/react-query';
 
 const RecommendationCardViewModel = () => {
   const { data: session } = useSession();
+  const queryClient = useQueryClient();
 
   const { data: allTimeArtists } = useGetTopArtists(
     session?.accessToken ?? '',
@@ -35,16 +37,21 @@ const RecommendationCardViewModel = () => {
     isLoading,
     refetch,
   } = useGetRecommendations(
-    session?.accessToken ?? '',
-    allTimeArtists ?? [],
-    currentArtists ?? [],
-    allTimeTracks ?? [],
-    currentTracks ?? [],
-    session?.user?.country ?? '',
+    session?.accessToken!,
+    allTimeArtists!,
+    currentArtists!,
+    allTimeTracks!,
+    currentTracks!,
+    session?.user?.country!,
   );
 
-  const handleRefresh = () => {
+  const handleRefresh = async () => {
     refetch();
+    queryClient.invalidateQueries({
+      queryKey: ['recommendations'],
+      exact: true,
+      refetchType: 'active',
+    });
   };
 
   return {
