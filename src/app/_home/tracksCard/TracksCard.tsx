@@ -8,7 +8,6 @@ import React, { FC } from 'react';
 import useGetTopTracks from '@/server/topTracks/queries';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
-// import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import TrackSkeleton from '../../../components/skeletons/TrackSkeleton';
 
