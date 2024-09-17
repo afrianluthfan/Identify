@@ -19,7 +19,11 @@ import useGetTopArtists from '@/server/topArtists/queries';
 const UserCardViewModel = () => {
   const { data: session } = useSession();
 
-  const waktu = new Date();
+  const [waktu, setWaktu] = useState<Date | null>(null);
+
+  useEffect(() => {
+    setWaktu(new Date());
+  }, []);
 
   const [_, convert, ref] = useToPng<HTMLDivElement>({
     quality: 1,

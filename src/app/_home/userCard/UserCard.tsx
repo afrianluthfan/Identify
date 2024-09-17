@@ -127,7 +127,7 @@ const UserCard: FC = () => {
                 {/* Issue Date */}
                 <div className='flex w-96 xs:text-xs ph:text-sm lg:text-xl lg:font-bold'>
                   Issued at{' '}
-                  {waktu.toLocaleDateString('en-US', {
+                  {waktu?.toLocaleDateString('en-US', {
                     day: 'numeric',
                     month: 'long',
                     year: 'numeric',
