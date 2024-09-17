@@ -134,7 +134,12 @@ const UserCard: FC = () => {
                   })}
                 </div>
                 <div className='mb-3 w-[175px]'>
-                  <Image src='/wm-dark.svg' alt='wm' width={175} height={175} />
+                  <Image
+                    src='/wm-dark.svg'
+                    alt='wm'
+                    width={175}
+                    height={175}
+                  />
                 </div>
               </div>
             </div>

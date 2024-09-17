@@ -26,6 +26,7 @@ const config = {
       fullUrl: true,
     },
   },
+  output: 'standalone'
 };
 
 export default withPlaiceholder(config);

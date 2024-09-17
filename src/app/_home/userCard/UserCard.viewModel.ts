@@ -11,7 +11,7 @@ import useAudioFeatures from '@/server/audioFeatures/queries';
 import calculateAverage, { AudioFeature } from '@/utils/calculateAverage';
 import roastsSchema from '@/actions/schema';
 import { useEffect, useState } from 'react';
-import { set, z } from 'zod';
+import { z } from 'zod';
 import { generateRoastRSC, RequestType } from '@/actions/actions';
 import { readStreamableValue } from 'ai/rsc';
 import useGetTopArtists from '@/server/topArtists/queries';
@@ -77,7 +77,7 @@ const UserCardViewModel = () => {
     ]),
   );
 
-  const { data: topArtists, isLoading } = useGetTopArtists(
+  const { data: topArtists } = useGetTopArtists(
     session?.accessToken ?? '',
     'medium_term',
     '50',
