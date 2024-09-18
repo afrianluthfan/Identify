@@ -1,37 +1,38 @@
-export ENV_FILE=.env.production
+export ENV_FILE=.env
 
 # Check if the environment file exists
 ifeq (,$(wildcard $(ENV_FILE)))
 $(error $(ENV_FILE) does not exist)
 endif
 
-# Docker Compose command with environment file
-DC := docker compose --env-file $(ENV_FILE)
+# Docker image and tag
+IMAGE := ghcr.io/aliezan/nextjs-identify-ghcr
+TAG := latest
 
-# Start the containers
-.PHONY: up
-up:
-	$(DC) up -d
+# Run the container
+.PHONY: run
+run:
+	docker run --rm --env-file $(ENV_FILE) -it -p 3000:3000 $(IMAGE)
 
-# Build the containers
+# Build the container
 .PHONY: build
 build:
-	$(DC) build
+	docker build . -t $(IMAGE):$(TAG)
 
-# Stop and remove the containers
-.PHONY: down
-down:
-	docker compose down
+# Stop the running container
+.PHONY: stop
+stop:
+	docker stop $(shell docker ps -q --filter ancestor=$(IMAGE))
 
 # View container logs
 .PHONY: logs
 logs:
-	$(DC) logs -f
+	docker logs $(shell docker ps -q --filter ancestor=$(IMAGE))
 
-# Open a shell in the app container
+# Open a shell in the running app container
 .PHONY: shell
 shell:
-	$(DC) exec app sh
+	docker exec -it $(shell docker ps -q --filter ancestor=$(IMAGE)) sh
 
 # Clean up Docker resources
 .PHONY: clean
