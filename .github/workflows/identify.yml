@@ -18,8 +18,8 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ghcr.io/nextjs-identify-ghcr:latest .
-          docker push ghcr.io/nextjs-identify-ghcr:latest
+          docker build -t ghcr.io/aliezan/nextjs-identify-ghcr:latest .
+          docker push ghcr.io/aliezan/nextjs-identify-ghcr:latest
 
       - name: Log out from Docker
         run: docker logout ghcr.io
