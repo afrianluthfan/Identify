@@ -1,25 +1,39 @@
-name: Build and Push Docker Image to Github Actions
+name: CI/CD
 
 on:
   push:
     branches:
       - master
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: 'aliezan/nextjs-identify-ghcr'
+
 jobs:
-  build:
+  amd64:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - name: Login to ghcr.io
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_PAT }}
 
-      - name: Log in to GitHub Container Registry
-        run: echo "${{ secrets.GH_PAT}}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Build image and push to registry
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
-      - name: Build and push Docker image
+      - name: Deploy to Coolify
         run: |
-          docker build -t ghcr.io/aliezan/nextjs-identify-ghcr:latest .
-          docker push ghcr.io/aliezan/nextjs-identify-ghcr:latest
-
-      - name: Log out from Docker
-        run: docker logout ghcr.io
+          curl --request GET '${{ secrets.COOLIFY_WEBHOOK }}' \
+               --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
