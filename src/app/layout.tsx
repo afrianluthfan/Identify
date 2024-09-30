@@ -32,7 +32,7 @@ const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
       <Script
         defer
         src='https://analytics.aliezan.me/script.js'
-        data-website-id='b15f8f63-2d78-4b77-931d-4943520bc63e'
+        data-website-id='4c9fcf40-514d-4774-b9b6-4bd4d92e1987'
       />
       <body className={inter.className}>
         <SessionProvider session={session}>
