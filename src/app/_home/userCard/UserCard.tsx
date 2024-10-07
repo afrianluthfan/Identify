@@ -88,9 +88,9 @@ const UserCard: FC = () => {
           {/* main shi */}
           <CardBody className='relative flex max-w-full overflow-hidden'>
             <div className='flex flex-col items-center md:flex-row lg:justify-center'>
-              <div className='relative flex w-full justify-center md:justify-end lg:px-12'>
+              <div className='relative flex w-full justify-center lg:justify-end lg:px-12'>
                 {/* roast card and all here */}
-                <Card className='p-5 xs:mb-8 xs:min-w-[232px] ph:min-w-[319px] ph:p-10 md:mb-0 md:min-w-[400px] '>
+                <Card className='p-5 xs:mb-8 xs:min-w-[232px] ph:min-w-[319px] ph:p-10 md:mb-0 lg:min-w-[400px] '>
                   <CardHeader className='font-bold ph:text-lg lg:text-xl '>
                     {isLoadingRoast ? (
                       <Skeleton className='min-h-[28px] w-full rounded-xl' />
@@ -117,8 +117,8 @@ const UserCard: FC = () => {
                 </Card>
               </div>
               {/* stats and shi */}
-              <div className='-order-last flex h-[35%] items-center justify-center p-8 ph:mt-0 ph:h-full ph:p-12 md:-order-first md:min-h-[400px] md:max-w-[50%] md:py-0'>
-                <Card className='p-5 xs:mb-8 xs:min-w-[232px] ph:min-w-[319px] ph:p-10 md:mb-0 md:min-w-[400px]'>
+              <div className='md:p- -order-last flex h-[35%] items-center justify-center p-8 ph:mt-0 ph:h-full ph:p-12 md:-order-first md:max-w-[50%] lg:min-h-[400px]'>
+                <Card className='p-5 xs:mb-8 xs:min-w-[232px] ph:min-w-[319px] ph:p-10 md:mb-0 md:px-0 lg:min-w-[400px] lg:p-10'>
                   <CardHeader className='font-bold ph:text-lg lg:text-xl '>
                     {isLoadingRoast ? (
                       <Skeleton className='min-h-[28px] w-full rounded-xl' />
