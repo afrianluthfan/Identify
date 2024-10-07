@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import {
   Avatar,
   Button,
@@ -25,13 +25,40 @@ const UserCard: FC = () => {
     isLoadingRoast,
   } = UserCardViewModel();
 
+  const [virgin, setVirginity] = useState(false);
+  const hasRunOnce = useRef(false);
+
+  const obtainCard = () => {
+    roastStream();
+    setVirginity(false);
+  };
+
+  useEffect(() => {
+    if (!hasRunOnce.current) {
+      if (!generation?.overallRoast) {
+        setVirginity(true);
+      }
+      hasRunOnce.current = true;
+    }
+  }, [generation?.overallRoast]);
+
   return (
     <>
       <div className='my-5 flex'>
         <RunningText length='100%' overflow='hidden' text={arrayText} />
       </div>
-      <div className='flex flex-col items-center justify-center px-4'>
-        <Card ref={ref} className='w-full max-w-[1080px] xs:h-fit lg:px-8'>
+      <div className='relative flex flex-col items-center justify-center px-4'>
+        {virgin ? (
+          <h1 className='absolute z-10 ml-5 text-8xl font-extrabold md:ml-0 md:text-center'>
+            Click obtain card
+          </h1>
+        ) : null}
+
+        {/* big main card ting */}
+        <Card
+          ref={ref}
+          className={`w-full max-w-[1080px] ${virgin ? 'blur-3xl' : ''} tr transition-all duration-100 xs:h-fit lg:px-8`}
+        >
           <div className='absolute right-[-500px] h-[300px] w-[750px] rotate-[95deg] bg-[#FF0095] blur-[80px]' />
           <div className='absolute bottom-[-500px] left-64 h-[750px] w-[900px] rotate-[-10deg] rounded-[100%] bg-[#8349FF] blur-[80px]' />
           <div className='absolute bottom-[-350px] right-[-200px] h-96 w-[750px] rotate-[-30deg] rounded-[100%] bg-[#FFCDFF] blur-[80px]' />
@@ -44,6 +71,7 @@ const UserCard: FC = () => {
             width={645}
             className='absolute left-0 top-[-100px] blur-sm'
           />
+          {/* header and dat */}
           <CardHeader className='p-5'>
             <div className='flex items-center justify-center'>
               <Avatar
@@ -57,9 +85,39 @@ const UserCard: FC = () => {
               </p>
             </div>
           </CardHeader>
+          {/* main shi */}
           <CardBody className='relative flex max-w-full overflow-hidden'>
             <div className='flex flex-col items-center md:flex-row lg:justify-center'>
-              <div className='-order-first flex h-[35%] items-center justify-center p-8 ph:mt-0 ph:h-full ph:p-12 md:order-first md:min-h-[400px] md:max-w-[50%] md:py-0'>
+              <div className='relative flex w-full justify-center md:justify-end lg:px-12'>
+                {/* roast card and all here */}
+                <Card className='p-5 xs:mb-8 xs:min-w-[232px] ph:min-w-[319px] ph:p-10 md:mb-0 md:min-w-[400px] '>
+                  <CardHeader className='font-bold ph:text-lg lg:text-xl '>
+                    {isLoadingRoast ? (
+                      <Skeleton className='min-h-[28px] w-full rounded-xl' />
+                    ) : (
+                      <p>Essentially,</p>
+                    )}
+                  </CardHeader>
+                  <CardBody className='text-xl ph:text-small'>
+                    {isLoadingRoast ? (
+                      <div className='flex flex-col gap-1'>
+                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
+                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
+                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
+                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
+                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
+                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
+                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
+                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
+                      </div>
+                    ) : (
+                      generation?.overallRoast
+                    )}
+                  </CardBody>
+                </Card>
+              </div>
+              {/* stats and shi */}
+              <div className='-order-last flex h-[35%] items-center justify-center p-8 ph:mt-0 ph:h-full ph:p-12 md:-order-first md:min-h-[400px] md:max-w-[50%] md:py-0'>
                 <Card className='p-5 xs:mb-8 xs:min-w-[232px] ph:min-w-[319px] ph:p-10 md:mb-0 md:min-w-[400px]'>
                   <CardHeader className='font-bold ph:text-lg lg:text-xl '>
                     {isLoadingRoast ? (
@@ -87,37 +145,9 @@ const UserCard: FC = () => {
                               </>
                             )}
                           </h1>
-                          {/* <p className='text-tiny'>{item?.percentageRoast}</p> */}
                         </li>
                       ))}
                     </ul>
-                  </CardBody>
-                </Card>
-              </div>
-              <div className='relative flex w-full justify-center md:justify-end lg:px-12'>
-                <Card className='p-5 xs:mb-8 xs:min-w-[232px] ph:min-w-[319px] ph:p-10 md:mb-0 md:min-w-[400px]'>
-                  <CardHeader className='font-bold ph:text-lg lg:text-xl '>
-                    {isLoadingRoast ? (
-                      <Skeleton className='min-h-[28px] w-full rounded-xl' />
-                    ) : (
-                      <p>Essentially,</p>
-                    )}
-                  </CardHeader>
-                  <CardBody className='text-xl ph:text-small'>
-                    {isLoadingRoast ? (
-                      <div className='flex flex-col gap-1'>
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                      </div>
-                    ) : (
-                      generation?.overallRoast
-                    )}
                   </CardBody>
                 </Card>
               </div>
@@ -134,12 +164,7 @@ const UserCard: FC = () => {
                   })}
                 </div>
                 <div className='mb-3 w-[175px]'>
-                  <Image
-                    src='/wm-dark.svg'
-                    alt='wm'
-                    width={175}
-                    height={175}
-                  />
+                  <Image src='/wm-dark.svg' alt='wm' width={175} height={175} />
                 </div>
               </div>
             </div>
@@ -147,7 +172,7 @@ const UserCard: FC = () => {
         </Card>
         <Button
           radius='sm'
-          onClick={roastStream}
+          onClick={obtainCard}
           type='button'
           className='mt-5 h-12 w-fit text-xl font-bold xs:px-12 ph:px-4 lg:w-[20%]'
         >
