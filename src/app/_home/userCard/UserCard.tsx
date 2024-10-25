@@ -6,6 +6,7 @@ import {
   Button,
   Card,
   CardBody,
+  CardFooter,
   CardHeader,
   Skeleton,
 } from '@nextui-org/react';
@@ -57,7 +58,7 @@ const UserCard: FC = () => {
         {/* big main card ting */}
         <Card
           ref={ref}
-          className={`w-full max-w-[1080px] ${virgin ? 'blur-3xl' : ''} tr transition-all duration-100 xs:h-fit lg:px-8`}
+          className={`w-full max-w-[1080px] ${virgin ? 'blur-3xl' : ''} tr transition-all duration-100 xs:h-fit`}
         >
           <div className='absolute right-[-500px] h-[300px] w-[750px] rotate-[95deg] bg-[#FF0095] blur-[80px]' />
           <div className='absolute bottom-[-500px] left-64 h-[750px] w-[900px] rotate-[-10deg] rounded-[100%] bg-[#8349FF] blur-[80px]' />
@@ -72,21 +73,21 @@ const UserCard: FC = () => {
             className='absolute left-0 top-[-100px] blur-sm'
           />
           {/* header and dat */}
-          <CardHeader className='p-5'>
+          <CardHeader className='bg-gray-900 p-5'>
             <div className='flex items-center justify-center'>
               <Avatar
                 src={session?.user?.image ?? ''}
-                size='lg'
+                size='md'
                 className='mr-5 rounded-[100%]'
                 isBordered
               />
-              <p className='h-fit text-[25px] font-bold ph:text-[30px]'>
+              <p className='h-fit text-[20px] font-bold ph:text-[30px]'>
                 {session?.user?.name}
               </p>
             </div>
           </CardHeader>
           {/* main shi */}
-          <CardBody className='relative flex max-w-full overflow-hidden'>
+          <CardBody className='relative flex max-w-full'>
             <div className='flex flex-col items-center md:flex-row lg:justify-center'>
               <div className='relative flex w-full justify-center lg:justify-end lg:px-12'>
                 {/* roast card and all here */}
@@ -152,23 +153,23 @@ const UserCard: FC = () => {
                 </Card>
               </div>
             </div>
-            <div className='sticky bottom-0 flex w-full justify-between xs:mb-2 md:mt-8'>
-              <div className='relative flex w-full items-center justify-between'>
-                {/* Issue Date */}
-                <div className='flex w-96 xs:text-xs ph:text-sm lg:text-xl lg:font-bold'>
-                  Issued at{' '}
-                  {waktu?.toLocaleDateString('en-US', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                  })}
-                </div>
-                <div className='mb-3 w-[175px]'>
-                  <Image src='/wm-dark.svg' alt='wm' width={175} height={175} />
-                </div>
+          </CardBody>
+          <CardFooter className='z-10 h-full w-full bg-gray-900 bg-opacity-90 p-8'>
+            <div className='relative flex w-full items-center justify-between'>
+              {/* Issue Date */}
+              <div className='flex w-96 xs:text-xs ph:text-sm lg:text-xl lg:font-bold'>
+                Issued at{' '}
+                {waktu?.toLocaleDateString('en-US', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                })}
+              </div>
+              <div className='z-10 flex w-[175px] items-center justify-center text-center'>
+                <Image src='/logo.svg' alt='wm' width={175} height={175} />
               </div>
             </div>
-          </CardBody>
+          </CardFooter>
         </Card>
         <Button
           radius='sm'
