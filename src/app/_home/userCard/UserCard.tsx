@@ -54,7 +54,7 @@ const UserCard: FC = () => {
             Click obtain card
           </h1>
         ) : null}
-        {/* big main card ting */}.
+        {/* big main card ting */}
         <Card
           ref={ref}
           className={`w-full max-w-[1080px] ${virgin ? 'blur-3xl' : ''} tr transition-all duration-100 xs:h-fit`}
