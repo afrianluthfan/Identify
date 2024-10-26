@@ -26,7 +26,6 @@ const TopTracksSection: FC = () => {
       ([entry]) => {
         if (entry?.isIntersecting) {
           setIsVisible(true);
-          console.log('TopTracksSection is visible'); // console output to show when the section is visible
           observer.unobserve(entry.target);
         }
       },
