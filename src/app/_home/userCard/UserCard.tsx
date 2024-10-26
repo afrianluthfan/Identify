@@ -50,12 +50,11 @@ const UserCard: FC = () => {
       </div>
       <div className='relative flex flex-col items-center justify-center px-4'>
         {virgin ? (
-          <h1 className='absolute z-10 ml-5 text-8xl font-extrabold md:ml-0 md:text-center'>
+          <h1 className='absolute z-10 ml-5 animate-pulse text-8xl font-extrabold md:ml-0 md:text-center'>
             Click obtain card
           </h1>
         ) : null}
-
-        {/* big main card ting */}
+        {/* big main card ting */}.
         <Card
           ref={ref}
           className={`w-full max-w-[1080px] ${virgin ? 'blur-3xl' : ''} tr transition-all duration-100 xs:h-fit`}
