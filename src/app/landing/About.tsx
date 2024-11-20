@@ -4,9 +4,9 @@ import RunningText from '../../components/RunningText';
 const About: FC = () => (
   <section
     id='about'
-    className='grid grid-cols-2 gap-14 items-center align-middle justify-evenly w-full h-[1000px] p-14'
+    className='grid h-[1000px] w-full grid-cols-2 items-center justify-evenly gap-14 p-14 align-middle'
   >
-    <div className='border border-black dark:border-white relative w-full h-full overflow-hidden'>
+    <div className='relative h-full w-full overflow-hidden border border-black dark:border-white'>
       <div className='absolute top-5'>
         <RunningText
           overflow='hidden'
@@ -22,7 +22,7 @@ const About: FC = () => (
         />
       </div>
     </div>
-    <div className='border border-black dark:border-white relative w-full h-full overflow-hidden'>
+    <div className='relative h-full w-full overflow-hidden border border-black dark:border-white'>
       <div className='absolute top-5'>
         <RunningText
           overflow='hidden'

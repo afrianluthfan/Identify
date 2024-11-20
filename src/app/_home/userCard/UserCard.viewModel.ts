@@ -4,7 +4,6 @@
 /* eslint-disable no-restricted-syntax */
 
 import { useSession } from 'next-auth/react';
-import { useToPng } from '@hugocxl/react-to-image';
 import { toast } from 'sonner';
 import useGetTopTracks from '@/server/topTracks/queries';
 import useAudioFeatures from '@/server/audioFeatures/queries';
@@ -24,26 +23,6 @@ const UserCardViewModel = () => {
   useEffect(() => {
     setWaktu(new Date());
   }, []);
-
-  const [_, convert, ref] = useToPng<HTMLDivElement>({
-    quality: 1,
-    onLoading() {
-      toast.loading('Loading...');
-      setTimeout(() => {
-        toast.dismiss();
-      }, 2000);
-    },
-    onSuccess: (data) => {
-      const link = document.createElement('a');
-      link.download = 'card.png';
-      link.href = data;
-      link.click();
-      toast.success('Downloaded!');
-    },
-    onError: (error) => {
-      toast.error(error);
-    },
-  });
 
   const { data: TopTracks } = useGetTopTracks(
     session?.accessToken ?? '',
@@ -168,8 +147,6 @@ const UserCardViewModel = () => {
     session,
     waktu,
     arrayText,
-    convert,
-    ref,
     roastStream,
     generation,
     scaledFeatures,

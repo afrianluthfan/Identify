@@ -26,7 +26,7 @@ const SignInButton: FC = () => {
   return (
     <Button
       onClick={signInHandler}
-      className='font-bold z-10'
+      className='z-10 font-bold'
       size='lg'
       radius='sm'
     >
@@ -37,7 +37,7 @@ const SignInButton: FC = () => {
         width={30}
         height={30}
       />
-      <p className='text-sm sm:text-md'>Sign in with Spotify</p>
+      <p className='sm:text-md text-sm'>Sign in with Spotify</p>
     </Button>
   );
 };

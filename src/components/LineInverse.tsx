@@ -31,7 +31,7 @@ const LineInverse: FC = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
       <motion.div
-        className='bg-white w-[2px] h-[60rem] stroke-white stroke-[10px]'
+        className='h-[60rem] w-[2px] bg-white stroke-white stroke-[10px]'
         // tailwind ini cuma styling garis, ga termasuk positioning. positioning diatur di bagian page.tsx
         variants={lineIn}
         initial='hidden'
@@ -53,7 +53,7 @@ const LineInverse: FC = () => {
           ease: cubicBezier(0.9, 0, 0.2, 1),
         }}
       >
-        <X className='ml-0 mb-2' />
+        <X className='mb-2 ml-0' />
       </motion.div>
     </div>
   );

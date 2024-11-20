@@ -25,6 +25,7 @@ const ProfileButton: FC<ProfileButtonProps> = ({ session }) => (
           size='sm'
           isBordered
           color='success'
+          data-testid='dropdown'
         />
         <ChevronDown />
       </Button>

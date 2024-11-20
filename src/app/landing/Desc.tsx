@@ -8,7 +8,7 @@ import HorCard from '../../components/HorCard';
 const Desc: FC = () => (
   <section
     id='desc'
-    className='flex h-[900px] w-full justify-center align-middle sm:mb-0 sm:items-center'
+    className='flex h-[900px] w-full justify-center overflow-y-clip align-middle sm:mb-0 sm:items-center'
   >
     <div className='flex h-auto w-full flex-col gap-3 sm:grid sm:grid-cols-4 sm:grid-rows-2 md:mb-16'>
       <div className='flex items-center justify-center border-x-0 border-b-0 border-black px-8 text-black dark:border-white dark:text-white sm:col-span-2 sm:border sm:border-none '>

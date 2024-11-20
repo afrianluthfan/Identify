@@ -206,12 +206,17 @@ const About: FC = () => (
               What is Identify?
             </h1>
             <p className='text-medium'>
-              Identify can generate an ID card for you based on your listening
-              habits on Spotify. The web app takes the five track features from
-              each track from your top tracks on Spotify, which are Happiness,
-              Danceability, Speechiness, Accousticness, and Energy. Webs like
-              obscurify and receiptify inspired the creation of this website, so
-              huge props and shoutouts to the creators of those websites!🙌🏼
+              Identify generates a personalized ID card based on your Spotify
+              listening habits. We analyze five key track features from your top
+              tracks: Happiness, Danceability, Speechiness, Acousticness, and
+              Energy to create your unique musical fingerprint. We&apos;ve added
+              a fun twist using Google&apos;s Gemini AI to generate playful
+              roasts based on your music taste. Each roast is uniquely crafted
+              to match your listening patterns, adding a personalized touch to
+              your music ID card. Inspired by amazing projects like Obscurify
+              and Receiptify - huge shoutouts to their creators! 🙌🏼 These
+              innovative platforms helped shape our vision for creating a unique
+              way to visualize your music preferences.
             </p>
           </div>
           <div>
