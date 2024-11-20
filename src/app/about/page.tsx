@@ -1,5 +1,7 @@
 'use client';
 
+/* eslint-disable max-len */
+
 import React, { FC } from 'react';
 import Image from 'next/image';
 import { cExtended, lexn } from '@/utils/Font';

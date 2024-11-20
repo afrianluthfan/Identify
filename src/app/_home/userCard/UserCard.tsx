@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useState, useEffect, useRef } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import {
   Avatar,
   Button,
@@ -26,8 +26,7 @@ const UserCard: FC = () => {
     isLoadingRoast,
   } = UserCardViewModel();
 
-  const [virgin, setVirginity] = useState(false);
-  const hasRunOnce = useRef(false);
+  const [virgin, setVirginity] = useState(true);
 
   const obtainCard = () => {
     roastStream();
@@ -35,11 +34,10 @@ const UserCard: FC = () => {
   };
 
   useEffect(() => {
-    if (!hasRunOnce.current) {
-      if (!generation?.overallRoast) {
-        setVirginity(true);
-      }
-      hasRunOnce.current = true;
+    if (!generation?.overallRoast) {
+      setVirginity(true);
+    } else {
+      setVirginity(false);
     }
   }, [generation?.overallRoast]);
 
