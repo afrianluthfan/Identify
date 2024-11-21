@@ -19,13 +19,18 @@ interface ProfileButtonProps {
 const ProfileButton: FC<ProfileButtonProps> = ({ session }) => (
   <DropdownMenu>
     <DropdownMenuTrigger asChild>
-      <Button variant='ghost' size='default' className='gap-4'>
+      <Button
+        variant='ghost'
+        size='default'
+        className='gap-4'
+        data-testid='dropdown-button'
+      >
         <Avatar
           src={session?.user?.image ?? ''}
           size='sm'
           isBordered
           color='success'
-          data-testid='dropdown'
+          data-testid='profile-pic'
         />
         <ChevronDown />
       </Button>

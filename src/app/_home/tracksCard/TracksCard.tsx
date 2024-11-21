@@ -67,14 +67,13 @@ const TracksCard: FC = () => {
                   {track.name}
                 </p>
                 <p className='text-tiny text-black dark:text-white'>
-                  {track.artists.map((artist: any, index: number) => (
+                  {track.artists.map((artist, index: number) => (
                     <span key={artist.id}>
                       {artist.name}
                       {index < track.artists.length - 1 && ', '}
                     </span>
                   ))}
                 </p>
-                {/* <ArrowUpRight size={16} className='absolute right-1 top-1' /> */}
               </div>
             </Link>
           </div>

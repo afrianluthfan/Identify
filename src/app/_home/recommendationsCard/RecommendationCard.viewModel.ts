@@ -37,12 +37,12 @@ const RecommendationCardViewModel = () => {
     isLoading,
     refetch,
   } = useGetRecommendations(
-    session?.accessToken!,
-    allTimeArtists!,
-    currentArtists!,
-    allTimeTracks!,
-    currentTracks!,
-    session?.user?.country!,
+    session?.accessToken ?? '',
+    allTimeArtists ?? [],
+    currentArtists ?? [],
+    allTimeTracks ?? [],
+    currentTracks ?? [],
+    session?.user?.country ?? '',
   );
 
   const handleRefresh = async () => {

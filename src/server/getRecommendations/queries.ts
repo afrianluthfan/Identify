@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { Artist, Track, Recommendations } from 'spotify-types';
+import { Artist, Track } from 'spotify-types';
+import { Recommendations } from '@/types/spotify-types';
 
 const baseURL = 'https://api.spotify.com/v1/recommendations?';
 

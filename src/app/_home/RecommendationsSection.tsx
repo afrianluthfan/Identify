@@ -29,7 +29,6 @@ const RecommendationsSection: FC = () => {
       ([entry]) => {
         if (entry?.isIntersecting) {
           setIsVisible(true);
-          console.log('RecommendationsCard is visible'); // console output to show when the section is visible
           observer.unobserve(entry.target);
         }
       },

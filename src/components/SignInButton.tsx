@@ -18,8 +18,8 @@ const SignInButton: FC = () => {
       if (!res?.error) {
         router.push(callbackUrl);
       }
-    } catch (err: any) {
-      throw new Error(err);
+    } catch (err) {
+      throw new Error('An error occured during sign-in');
     }
   };
 

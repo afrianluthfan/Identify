@@ -1,6 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-plusplus */
-
 'use client';
 
 import React, { FC, useRef } from 'react';
@@ -28,6 +25,7 @@ const RecommendationsCard: FC = () => {
   };
 
   const ref = useRef(null);
+  // @ts-expect-error
   const inView = useInView(ref);
   const animationControl = useAnimation();
 
@@ -47,7 +45,6 @@ const RecommendationsCard: FC = () => {
         </Button>
       </div>
       <motion.div
-        className='grid grid-cols-1 gap-4'
         variants={gerak}
         initial='hidden'
         animate={animationControl}
@@ -65,7 +62,7 @@ const RecommendationsCard: FC = () => {
             ))}
           </>
         ) : (
-          Recommendations?.tracks?.map((track: any) => (
+          Recommendations?.tracks?.map((track) => (
             <div className='h-fit w-full border-none' key={track.id}>
               <div className='h-fit'>
                 <Link
@@ -73,7 +70,6 @@ const RecommendationsCard: FC = () => {
                   className='hover:underline'
                 >
                   <div className='flex h-fit flex-col items-center justify-center gap-3 overflow-hidden md:flex-row'>
-                    {/* @ts-ignore */}
                     <Image
                       alt={track.name}
                       className='object-cover'
@@ -102,7 +98,7 @@ const RecommendationsCard: FC = () => {
                         {track.name}
                       </p>
                       <p className='text-black/80 dark:text-white/80 sm:text-2xl'>
-                        {track.artists.map((artist: any, index: number) => (
+                        {track.artists.map((artist, index: number) => (
                           <span key={artist.id}>
                             {artist.name}
                             {index < track.artists.length - 1 && ', '}

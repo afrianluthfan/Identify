@@ -20,13 +20,14 @@ const config = {
   },
   eslint: {
     ignoreDuringBuilds: true,
+    dirs: ['src', '__tests__'],
   },
   logging: {
     fetches: {
       fullUrl: true,
     },
   },
-  output: 'standalone'
+  output: 'standalone',
 };
 
 export default withPlaiceholder(config);
