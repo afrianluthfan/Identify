@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useLayoutEffect } from 'react';
 import {
   Avatar,
   Button,
@@ -16,30 +16,26 @@ import ProgressBar from '@/components/ProgressBar';
 import UserCardViewModel from './UserCard.viewModel';
 
 const UserCard: FC = () => {
-  const {
-    session,
-    waktu,
-    arrayText,
-    ref,
-    roastStream,
-    generation,
-    isLoadingRoast,
-  } = UserCardViewModel();
+  const { session, waktu, arrayText, roastStream, generation, isLoadingRoast } =
+    UserCardViewModel();
 
   const [virgin, setVirginity] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   const obtainCard = () => {
     roastStream();
     setVirginity(false);
   };
 
+  useLayoutEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
-    if (!generation?.overallRoast) {
-      setVirginity(true);
-    } else {
-      setVirginity(false);
+    if (mounted) {
+      setVirginity(!generation?.overallRoast);
     }
-  }, [generation?.overallRoast]);
+  }, [generation?.overallRoast, mounted]);
 
   return (
     <>
@@ -47,15 +43,14 @@ const UserCard: FC = () => {
         <RunningText length='100%' overflow='hidden' text={arrayText} />
       </div>
       <div className='relative flex flex-col items-center justify-center px-4'>
-        {virgin ? (
+        {virgin && mounted && (
           <h1 className='absolute z-10 ml-5 animate-pulse text-8xl font-extrabold md:ml-0 md:text-center'>
             Click obtain card
           </h1>
-        ) : null}
+        )}
         {/* big main card ting */}
         <Card
-          ref={ref}
-          className={`w-full max-w-[1080px] ${virgin ? 'blur-3xl' : ''} tr transition-all duration-100 xs:h-fit`}
+          className={`w-full max-w-[1080px] ${virgin && mounted ? 'blur-3xl' : ''} tr transition-all duration-100 xs:h-fit`}
         >
           <div className='absolute right-[-500px] h-[300px] w-[750px] rotate-[95deg] bg-[#FF0095] blur-[80px]' />
           <div className='absolute bottom-[-500px] left-64 h-[750px] w-[900px] rotate-[-10deg] rounded-[100%] bg-[#8349FF] blur-[80px]' />
@@ -99,14 +94,12 @@ const UserCard: FC = () => {
                   <CardBody className='text-xl ph:text-small'>
                     {isLoadingRoast ? (
                       <div className='flex flex-col gap-1'>
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
-                        <Skeleton className='min-h-[18px] w-full rounded-xl' />
+                        {Array.from({ length: 8 }).map((_, index) => (
+                          <Skeleton
+                            className='min-h-[18px] w-full rounded-xl'
+                            key={index}
+                          />
+                        ))}
                       </div>
                     ) : (
                       generation?.overallRoast
@@ -136,7 +129,7 @@ const UserCard: FC = () => {
                               </div>
                             ) : (
                               <>
-                                {item?.nameOfAudioFeature}: {item?.percentage}%
+                                {item?.nameOfAudioFeature}: {item?.percentage}
                                 <ProgressBar
                                   value={parseInt(item?.percentage, 10)}
                                 />

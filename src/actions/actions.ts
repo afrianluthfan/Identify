@@ -1,7 +1,3 @@
-/* eslint-disable default-case */
-/* eslint-disable no-console */
-/* eslint-disable no-restricted-syntax */
-
 'use server';
 
 import { streamObject } from 'ai';
@@ -27,7 +23,7 @@ export const generateRoastRSC = async (
 
   (async () => {
     try {
-      const { fullStream } = await streamObject({
+      const { fullStream } = streamObject({
         model: google('models/gemini-1.5-flash-latest'),
         system:
           'You generate roasts for this Spotify user music taste with details from each percentage and overall roast.',

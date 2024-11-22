@@ -45,6 +45,7 @@ const RecommendationsCard: FC = () => {
         </Button>
       </div>
       <motion.div
+        className='grid grid-cols-1 gap-4'
         variants={gerak}
         initial='hidden'
         animate={animationControl}
