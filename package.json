@@ -15,7 +15,7 @@
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
       "eslint src --ext .js,.jsx,.ts,.tsx",
-      "jest --ci"
+      "jest --bail --findRelatedTests --passWithNoTests"
     ]
   },
   "dependencies": {
